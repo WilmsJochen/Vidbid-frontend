@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { useTranslation } from "react-i18next";
-import _ from 'lodash'
-import { Image,Header, Grid, Search } from 'semantic-ui-react'
+import VideoList from "../../common/video/VideoList";
 
 export default function PublicSite() {
     const { t } = useTranslation();
@@ -9,9 +8,7 @@ export default function PublicSite() {
 
     return (
         <div>
-            <h1 >
-                HOME
-            </h1>
+            <VideoList/>
         </div>
     );
 }

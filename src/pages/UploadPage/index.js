@@ -9,7 +9,7 @@ export default function PublicSite() {
 
     return (
         <div>
-            <h1 >
+            <h1>
                 UPLOAD
             </h1>
         </div>

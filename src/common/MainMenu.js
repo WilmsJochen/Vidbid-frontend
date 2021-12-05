@@ -5,24 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function MainMenu({ children }){
-    const [activeItem, setActiveItem] = useState("Home")
+    const [activeItem, setActiveItem] = useState("VidBid")
     const navigate = useNavigate();
 
     const onMenuClick = (e, {name}) => {
-        console.log(e)
-        console.log(name)
         setActiveItem(name)
         navigate("/"+name.toLowerCase());
     }
 
-    console.log(children)
-
     return (
         <>
-            <Menu tabular>
+            <Menu inverted >
                 <Menu.Item
-                    name='Home'
-                    active={activeItem === 'Home'}
+                    name='VidBid'
+                    active={activeItem === 'VidBid'}
                     onClick={onMenuClick}
                 />
                 <Menu.Item
@@ -31,7 +27,7 @@ export default function MainMenu({ children }){
                     onClick={onMenuClick}
                 />
                 <Menu.Menu position='right'>
-                    <Dropdown item text="todo">
+                    <Dropdown item text="login">
                         <Dropdown.Menu>
                             <Dropdown.Item>login</Dropdown.Item>
                             <Dropdown.Item>logout</Dropdown.Item>
