@@ -1,10 +1,13 @@
-import UserProvider from "./UserProvider"
-import GroupProvider from "./GroupProvider"
-import OrganisationProvider from "./OrganisationProvider"
+import {Top5VidsProvider} from "./Top5VidsProvider"
+import {AllVidsProvider} from "./AllVidsProvider"
+
 
 export default function CombinedProvider({ children }) {
     return (
-            //todo add providers
-            {children}
+        <Top5VidsProvider>
+            {/*<AllVidsProvider>*/}
+                {children}
+            {/*</AllVidsProvider>*/}
+        </Top5VidsProvider>
     );
 }

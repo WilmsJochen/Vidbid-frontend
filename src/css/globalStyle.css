@@ -1,0 +1,8 @@
+body{
+    background-image: linear-gradient(to bottom right, #2F4F4F, #ADD8E6);
+    background-size: cover;
+    background-repeat: repeat-y;
+    margin-bottom: 0;
+    padding-bottom: 1%;
+    height: 100%;
+}

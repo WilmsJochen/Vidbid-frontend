@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/greyBackgount.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/greyBackgount.jpg" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="tmp commit.">
+      <change afterPath="$PROJECT_DIR$/src/contextProviders/AllVidsProvider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contextProviders/Top5VidsProvider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/globalStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/UploadPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UploadPage/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +34,9 @@
     <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/contextProviders" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -45,6 +46,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/contextProviders" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/src/pages/UploadPage" />
@@ -62,8 +64,18 @@
       <option name="presentableId" value="Default" />
       <updated>1638617918233</updated>
       <workItem from="1638617920211" duration="1798000" />
-      <workItem from="1638703796795" duration="4472000" />
+      <workItem from="1638703796795" duration="4666000" />
+      <workItem from="1638778921865" duration="310000" />
+      <workItem from="1638818170921" duration="8447000" />
     </task>
+    <task id="LOCAL-00001" summary="tmp commit.">
+      <created>1638708449793</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1638708449793</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,13 +93,16 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tmp commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="tmp commit." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/common/video/VideoCard.js</url>
           <line>11</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
