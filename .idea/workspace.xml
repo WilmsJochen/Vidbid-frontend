@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add favourite">
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Improve favourite adding and removing">
+      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/video/VideoFrame.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/video/VideoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/video/VideoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/FavoriteVidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/FavoriteVidsProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +24,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="21oqj1wECxp2QMwLcJKpBj0OJ7i" />
   <component name="ProjectViewState">
@@ -30,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/contextProviders" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -46,6 +60,7 @@
       <recent name="$PROJECT_DIR$/src/pages/UploadPage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/common/video/videoActionButton" />
       <recent name="$PROJECT_DIR$/src/pages/HomePage" />
     </key>
   </component>
@@ -65,7 +80,7 @@
       <workItem from="1638955080962" duration="1985000" />
       <workItem from="1638957826551" duration="1635000" />
       <workItem from="1638964953180" duration="1898000" />
-      <workItem from="1638984908784" duration="1003000" />
+      <workItem from="1638984908784" duration="10290000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -81,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638967885062</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Improve favourite adding and removing">
+      <created>1638985947806</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1638985947806</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,15 +124,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tmp commit." />
     <MESSAGE value="Add favourite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add favourite" />
+    <MESSAGE value="Improve favourite adding and removing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve favourite adding and removing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/common/video/VideoCard.js</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -31,30 +31,40 @@ export default class ApiService {
                 title: "Kevin de Vries - Planet X",
                 description: "UNITED THROUGH MUSIC.",
                 adaPrice: 150,
+                views: 0,
+                status: "Initialised"
             },
             {
                 id: "xLvMmC_ZKLk",
                 title: "Gestapo Knallmuzik - Golden Drop [Öfficial Lyrik Video]",
                 description: "Ein Zevermusic Produktzion.",
                 adaPrice: 10000,
+                views: 11400,
+                status: "Closed"
             },
             {
                 id: "dQw4w9WgXcQ",
                 title: "Rick Astley - Never Gonna Give You Up (Official Music Video)\n",
                 description: "The official video",
                 adaPrice: 2000,
+                views: 131131400,
+                status: "Offered"
             },
             {
                 id: "eX2qFMC8cFo",
                 title: "Funny cats",
                 description: "Cats",
                 adaPrice: 150,
+                views: 13400,
+                status: "Opened"
             },
             {
                 id: "cxEySPSUcXs",
                 title: "Why is Belgium a country? - History of Belgium in 11 Minutes\n",
                 description: "Belgium",
                 adaPrice: 150,
+                views: 10000,
+                status: "Opened"
             }
         ];
     }
@@ -66,41 +76,53 @@ export default class ApiService {
                 title: "Kevin de Vries - Planet X",
                 description: "UNITED THROUGH MUSIC.",
                 adaPrice: 150,
+                views: 0,
+                status: "Initialised"
             },
             {
                 id: "xLvMmC_ZKLk",
                 title: "Gestapo Knallmuzik - Golden Drop [Öfficial Lyrik Video]",
                 description: "Ein Zevermusic Produktzion.",
                 adaPrice: 10000,
+                views: 11400,
+                status: "Closed"
             },
             {
                 id: "dQw4w9WgXcQ",
                 title: "Rick Astley - Never Gonna Give You Up (Official Music Video)\n",
                 description: "The official video",
                 adaPrice: 2000,
+                views: 131131400,
+                status: "Offered"
             },
             {
                 id: "eX2qFMC8cFo",
                 title: "Funny cats",
                 description: "Cats",
                 adaPrice: 150,
+                views: 13400,
+                status: "Opened"
             },
             {
                 id: "cxEySPSUcXs",
                 title: "Why is Belgium a country? - History of Belgium in 11 Minutes\n",
                 description: "Belgium",
                 adaPrice: 150,
+                views: 10000,
+                status: "Opened"
             }
         ];
     }
-    async getMyVids(){
+    async getOwnedVids(){
         return  [
             {
                 id: "xLvMmC_ZKLk",
                 title: "Gestapo Knallmuzik - Golden Drop [Öfficial Lyrik Video]",
                 description: "Ein Zevermusic Produktzion.",
                 adaPrice: 10000,
-            }
+                views: 11400,
+                status: "Closed"
+            },
         ];
     }
 }
