@@ -12,8 +12,8 @@ export function FavoriteVidsProvider({children}) {
         localStorage.setItem('favoriteVids', JSON.stringify(newList));
         setFavoriteVids(newList);
     }
-    const deleteFavoriteVid = (vid) =>{
-        const newList = favoriteVids.filter(favoriteVid => favoriteVid !== vid );
+    const deleteFavoriteVid = (vidId) =>{
+        const newList = favoriteVids.filter(favoriteVid => favoriteVid.id !== vidId );
         localStorage.setItem('favoriteVids', JSON.stringify(newList));
         setFavoriteVids(newList);
     }

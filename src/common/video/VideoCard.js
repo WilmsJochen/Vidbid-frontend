@@ -24,16 +24,16 @@ const StarWrapper = styled.div`
   margin-left: 20%;
 `
 
-export default function VideoCard({youtubeId, adaPrice, title, description }){
+export default function VideoCard({id, adaPrice, title, description }){
     const [favoriteVids, setFavoriteVids, addFavoriteVid,deleteFavoriteVid]= useContext(FavoriteVidsContext)
-    const isFavoriteVid = favoriteVids.includes(youtubeId);
+    console.log(id)
+    console.log(favoriteVids)
+    const isFavoriteVid = favoriteVids.map(vid => vid.id).includes(id);
     const removeFromFavorites = () => {
-        console.log("delete from favo")
-        deleteFavoriteVid(youtubeId);
+        deleteFavoriteVid(id);
     }
     const addToFavorites = () => {
-        console.log("add to favo")
-        addFavoriteVid(youtubeId);
+        addFavoriteVid({id, adaPrice, title, description });
     }
     return (
         <Card>
@@ -41,7 +41,7 @@ export default function VideoCard({youtubeId, adaPrice, title, description }){
                 <VideoFrame
                     width="853"
                     height="480"
-                    src={`https://www.youtube.com/embed/${youtubeId}`}
+                    src={`https://www.youtube.com/embed/${id}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

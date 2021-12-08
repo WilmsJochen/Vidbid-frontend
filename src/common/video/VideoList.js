@@ -13,19 +13,29 @@ const VideoCardWrapper = styled.div`
 
 
 export default function VideoList({vidList = []}){
-    return (
-        <Grid columns={5}>
-            {
-                vidList.map( vid => {
-                    return(
-                        <Grid.Column>
-                            <VideoCardWrapper>
-                                <VideoCard youtubeId={vid.id} title={vid.title} description={vid.description} adaPrice={vid.adaPrice}/>
-                            </VideoCardWrapper>
-                        </Grid.Column>
-                    )
-                } )
-            }
-        </Grid>
-    );
+    console.log(vidList)
+    if(vidList === null || vidList.length === 0){
+      console.log(vidList)
+      console.log("vidList empty")
+      return (
+          <div>no vids</div>
+      )
+    }else {
+        return (
+            <Grid columns={5}>
+                {
+                    vidList.map( vid => {
+                        return(
+                            <Grid.Column>
+                                <VideoCardWrapper>
+                                    <VideoCard youtubeId={vid.id} title={vid.title} description={vid.description} adaPrice={vid.adaPrice}/>
+                                </VideoCardWrapper>
+                            </Grid.Column>
+                        )
+                    } )
+                }
+            </Grid>
+        );
+    }
+
 }
