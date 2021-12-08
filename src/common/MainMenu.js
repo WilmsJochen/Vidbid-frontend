@@ -22,8 +22,8 @@ export default function MainMenu({ children }){
                     onClick={onMenuClick}
                 />
                 <Menu.Item
-                    name='Upload'
-                    active={activeItem === 'Upload'}
+                    name='MyVidBid'
+                    active={activeItem === 'MyVidBid'}
                     onClick={onMenuClick}
                 />
                 <Menu.Menu position='right'>

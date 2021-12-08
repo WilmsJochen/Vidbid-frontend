@@ -93,4 +93,14 @@ export default class ApiService {
             }
         ];
     }
+    async getMyVids(){
+        return  [
+            {
+                id: "xLvMmC_ZKLk",
+                title: "Gestapo Knallmuzik - Golden Drop [Öfficial Lyrik Video]",
+                description: "Ein Zevermusic Produktzion.",
+                adaPrice: 10000,
+            }
+        ];
+    }
 }

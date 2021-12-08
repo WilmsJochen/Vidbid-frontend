@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="tmp commit.">
-      <change afterPath="$PROJECT_DIR$/src/contextProviders/AllVidsProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/contextProviders/Top5VidsProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/globalStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contextProviders/FavoriteVidsProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/video/VideoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/UploadPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/contextProviders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -67,6 +66,10 @@
       <workItem from="1638703796795" duration="4666000" />
       <workItem from="1638778921865" duration="310000" />
       <workItem from="1638818170921" duration="8447000" />
+      <workItem from="1638887993950" duration="528000" />
+      <workItem from="1638955080962" duration="1985000" />
+      <workItem from="1638957826551" duration="1635000" />
+      <workItem from="1638964953180" duration="1299000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -102,7 +105,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/common/video/VideoCard.js</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

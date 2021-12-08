@@ -1,13 +1,14 @@
 import {Top5VidsProvider} from "./Top5VidsProvider"
 import {AllVidsProvider} from "./AllVidsProvider"
+import {FavoriteVidsProvider} from "./FavoriteVidsProvider"
 
 
 export default function CombinedProvider({ children }) {
     return (
-        <Top5VidsProvider>
+        <FavoriteVidsProvider>
             {/*<AllVidsProvider>*/}
                 {children}
             {/*</AllVidsProvider>*/}
-        </Top5VidsProvider>
+        </FavoriteVidsProvider>
     );
 }

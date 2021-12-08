@@ -11,27 +11,12 @@ const VideoCardWrapper = styled.div`
   margin-right : 10%;
 `
 
-const LoaderWrapper = styled.div`
-  margin : 1px;
-`
 
-export default function VideoList({isForTop5 = false}){
-    const [top5VidsList, setTop5VidsList] =  useContext(Top5VidsContext);
-    // const [allVidsList, setAllVidsList] =  useContext(AllVidsContext);
-
-    if(!(isForTop5 ? top5VidsList : top5VidsList)) return (
-        <LoaderWrapper>
-            <Dimmer active>
-                <Loader>Loading</Loader>
-            </Dimmer>
-        </LoaderWrapper>
-
-    );
-
+export default function VideoList({vidList = []}){
     return (
         <Grid columns={5}>
             {
-                (isForTop5 ? top5VidsList : top5VidsList).map( vid => {
+                vidList.map( vid => {
                     return(
                         <Grid.Column>
                             <VideoCardWrapper>

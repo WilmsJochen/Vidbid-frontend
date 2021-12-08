@@ -1,6 +1,7 @@
-import React, { useState }  from "react";
-import { Card, Icon } from 'semantic-ui-react'
+import React, { useState,useContext }  from "react";
+import {Button, Card, Grid, Icon} from 'semantic-ui-react'
 import styled from 'styled-components'
+import {FavoriteVidsContext}  from "../../contextProviders/FavoriteVidsProvider";
 
 const VideoFrameWrapper = styled.div`
   overflow: hidden;
@@ -16,9 +17,24 @@ const VideoFrame = styled.iframe`
   width: 100%;
   position: absolute;
 `
+const BidButtonWrapper = styled.div`
+  margin-left: 50%;
+`
+const StarWrapper = styled.div`
+  margin-left: 20%;
+`
 
 export default function VideoCard({youtubeId, adaPrice, title, description }){
-
+    const [favoriteVids, setFavoriteVids, addFavoriteVid,deleteFavoriteVid]= useContext(FavoriteVidsContext)
+    const isFavoriteVid = favoriteVids.includes(youtubeId);
+    const removeFromFavorites = () => {
+        console.log("delete from favo")
+        deleteFavoriteVid(youtubeId);
+    }
+    const addToFavorites = () => {
+        console.log("add to favo")
+        addFavoriteVid(youtubeId);
+    }
     return (
         <Card>
             <VideoFrameWrapper>
@@ -34,12 +50,31 @@ export default function VideoCard({youtubeId, adaPrice, title, description }){
             </VideoFrameWrapper>
             <Card.Content>
                 <Card.Header>{title}</Card.Header>
-                <Card.Description>
-                    {description}
-                </Card.Description>
+                <Grid>
+                    <Grid.Row>
+                        <Card.Description>
+                            {description}
+                        </Card.Description>
+                        <StarWrapper>
+                            {isFavoriteVid ? <div onClick={removeFromFavorites}> <Icon name='star' color='yellow'/></div> : <div onClick={addToFavorites}><Icon name='star outline' /></div>}
+                        </StarWrapper>
+                    </Grid.Row>
+                </Grid>
             </Card.Content>
             <Card.Content extra>
-                {adaPrice} ₳
+                <Grid>
+                    <Grid.Row>
+                        <div>
+                            {adaPrice} ₳
+                        </div>
+                        <BidButtonWrapper>
+                            <Button>
+                                Bid
+                            </Button>
+                        </BidButtonWrapper>
+                    </Grid.Row>
+                </Grid>
+
             </Card.Content>
         </Card>
     );
