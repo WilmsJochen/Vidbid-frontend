@@ -26,6 +26,16 @@ export default function MainMenu({ children }){
                     active={activeItem === 'MyVidBid'}
                     onClick={onMenuClick}
                 />
+                <Menu.Item
+                    name='FAQ'
+                    active={activeItem === 'FAQ'}
+                    onClick={onMenuClick}
+                />
+                <Menu.Item
+                    name='Team'
+                    active={activeItem === 'Team'}
+                    onClick={onMenuClick}
+                />
                 <Menu.Menu position='right'>
                     <Dropdown item text="login">
                         <Dropdown.Menu>

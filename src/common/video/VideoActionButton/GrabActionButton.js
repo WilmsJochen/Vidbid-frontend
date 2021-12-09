@@ -12,7 +12,7 @@ const ButtonContentWrapper = styled.div`
   padding-left: 70%;
 `
 
-export default function OpenActionButton({video}){
+export default function GrabActionButton({video}){
     const [open, setOpen] = useState(false)
     const [formState, setFormState] = useState({minPrice: 0, agreeConditions: false})
 
@@ -34,9 +34,9 @@ export default function OpenActionButton({video}){
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button>Sell</Button>}
+                trigger={<Button>Grab</Button>}
             >
-                <Modal.Header>Sell video</Modal.Header>
+                <Modal.Header>Grab funds</Modal.Header>
                 <Modal.Content>
                     <Form onSubmit={handleSubmit}>
                         <Grid columns={2}>
@@ -54,10 +54,6 @@ export default function OpenActionButton({video}){
                                 </ContentWrapper>
                                 <ContentWrapper>
                                     <Form.Field>
-                                        <label>Minimal price</label>
-                                        <Form.Input name="bidPrice" value={formState.bidPrice} onChange={handleChange} placeholder='Bid amount' />
-                                    </Form.Field>
-                                    <Form.Field>
                                         <Form.Checkbox name="agreeConditions" value={formState.agreeConditions} onChange={handleChange} label='I agree to the Terms and Conditions' />
                                     </Form.Field>
                                 </ContentWrapper>
@@ -68,7 +64,7 @@ export default function OpenActionButton({video}){
                                 Cancel
                             </Button>
                             <Button
-                                content="Sell"
+                                content="Grab"
                                 type="submit"
                                 labelPosition='right'
                                 icon='checkmark'

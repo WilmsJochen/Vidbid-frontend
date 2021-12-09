@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Improve favourite adding and removing">
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/video/VideoFrame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add state and action management.">
+      <change afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/contextProviders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/common/video/VideoActionButton" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -54,6 +48,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/common/video/VideoActionButton" />
       <recent name="$PROJECT_DIR$/src/contextProviders" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public/images" />
@@ -80,7 +75,9 @@
       <workItem from="1638955080962" duration="1985000" />
       <workItem from="1638957826551" duration="1635000" />
       <workItem from="1638964953180" duration="1898000" />
-      <workItem from="1638984908784" duration="10290000" />
+      <workItem from="1638984908784" duration="10361000" />
+      <workItem from="1639039661382" duration="18000" />
+      <workItem from="1639046714508" duration="2378000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -103,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638985947806</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add state and action management.">
+      <created>1638995258290</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1638995258290</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,14 +129,14 @@
     <MESSAGE value="tmp commit." />
     <MESSAGE value="Add favourite" />
     <MESSAGE value="Improve favourite adding and removing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve favourite adding and removing" />
+    <MESSAGE value="Add state and action management." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add state and action management." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/common/video/VideoCard.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
