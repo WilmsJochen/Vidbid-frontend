@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMap.name }}
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+data:
+  REACT_APP_RELEASE: {{ .Chart.Version }}
+  REACT_APP_ENVIRONMENT: {{ .Values.environment }}
+  REACT_APP_BACKEND_URL: {{ .Values.endpoints.orchestrator }}
