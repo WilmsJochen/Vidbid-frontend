@@ -8,7 +8,7 @@ env:
 jobs:
   release:
     name: Release Docker image
-    runs-on: [self-hosted, shared, builder]
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.bump_version.outputs.new_tag }}
       APP_NAME: ${{ steps.repository_name.outputs.value }}

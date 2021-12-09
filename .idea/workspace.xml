@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add grab action">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/.helmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/Chart.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/NOTES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/_helpers.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/configmap.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/deployment.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/default.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/gzip.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first build pipeline">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +74,7 @@
       <workItem from="1638984908784" duration="10361000" />
       <workItem from="1639039661382" duration="18000" />
       <workItem from="1639046714508" duration="2702000" />
-      <workItem from="1639074099800" duration="3352000" />
+      <workItem from="1639074099800" duration="3542000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -127,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639051216267</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add first build pipeline">
+      <created>1639077515695</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639077515695</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +142,8 @@
     <MESSAGE value="Improve favourite adding and removing" />
     <MESSAGE value="Add state and action management." />
     <MESSAGE value="Add grab action" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add grab action" />
+    <MESSAGE value="Add first build pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add first build pipeline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
