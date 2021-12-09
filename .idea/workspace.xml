@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first build pipeline" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first build pipeline">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +74,7 @@
       <workItem from="1638984908784" duration="10361000" />
       <workItem from="1639039661382" duration="18000" />
       <workItem from="1639046714508" duration="2702000" />
-      <workItem from="1639074099800" duration="3855000" />
+      <workItem from="1639074099800" duration="3895000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -123,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639077704193</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add first build pipeline">
+      <created>1639078015669</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639078015669</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
