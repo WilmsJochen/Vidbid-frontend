@@ -49,6 +49,6 @@ jobs:
       - name: Logging to docker registry
         run: docker login -u desyco -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: build docker image
-        run: docker build --tag desyco/vidbid-frontend:0.0.1 .
+        run: docker build --tag desyco/vidbid-frontend:0.0.2 .
       - name: push docker image
-        run: docker push desyco/vidbid-frontend:0.0.1
+        run: docker push desyco/vidbid-frontend:0.0.2

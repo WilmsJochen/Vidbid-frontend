@@ -4,8 +4,8 @@
 replicaCount: 1
 image:
   repository: desyco/vidbid-frontend
-  tag: 0.0.1
-  pullPolicy: IfNotPresent
+  tag: 0.0.2
+  pullPolicy: Always
 ingress:
   name: vidbid-frontend
   ipAddressName: vidbid-ip
