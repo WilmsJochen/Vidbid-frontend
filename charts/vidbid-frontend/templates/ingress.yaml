@@ -3,15 +3,10 @@ kind: Ingress
 metadata:
   name: {{ .Values.ingress.name }}
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.ipAddressName }}
+    kubernetes.io/ingress.global-static-ip-name: "{{ .Values.ingress.ipAddressName }}"
 spec:
-  rules:
-    - http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: {{ .Values.service.name }}
-                port:
-                  number: {{ .Values.service.externalPort }}
+  defaultBackend:
+    service:
+      name: {{ .Values.service.name }}
+      port:
+        number: {{ .Values.service.externalPort }}
