@@ -1,0 +1,12 @@
+---
+# Source: vidbid-frontend/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vidbid-config-map
+  labels:
+    chart: "vidbid-frontend-0.1.0-SNAPSHOT"
+data:
+  REACT_APP_RELEASE: 0.1.0-SNAPSHOT
+  REACT_APP_ENVIRONMENT: test
+  REACT_APP_BACKEND_URL: https://vidbid.finance

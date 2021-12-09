@@ -1,0 +1,56 @@
+---
+# Source: vidbid-frontend/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vidbid-frontend
+  labels:
+    draft: draft-app
+    chart: "vidbid-frontend-0.1.0-SNAPSHOT"
+    app: vidbid-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vidbid-frontend
+  template:
+    metadata:
+      labels:
+        draft: draft-app
+        app: vidbid-frontend
+    spec:
+      securityContext:
+        runAsUser: 101
+        runAsNonRoot: true
+      containers:
+      - name: vidbid-frontend
+        image: "desyco/vidbid-frontend:0.0.3"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 200m
+              memory: 128Mi
+        envFrom:
+        - configMapRef:
+            name: vidbid-config-map
+      terminationGracePeriodSeconds: 10

@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="update dockerfile">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/templates/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +74,7 @@
       <workItem from="1638984908784" duration="10361000" />
       <workItem from="1639039661382" duration="18000" />
       <workItem from="1639046714508" duration="2702000" />
-      <workItem from="1639074099800" duration="8655000" />
+      <workItem from="1639074099800" duration="10489000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -164,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639082531921</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update dockerfile">
+      <created>1639083720306</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1639083720306</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

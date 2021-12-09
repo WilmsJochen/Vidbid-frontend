@@ -1,0 +1,14 @@
+---
+# Source: vidbid-frontend/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vidbid-frontend
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "vidbid-ip"
+spec:
+  defaultBackend:
+    service:
+      name: vidbid-frontend
+      port:
+        number: 80
