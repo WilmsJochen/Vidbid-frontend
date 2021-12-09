@@ -3,9 +3,12 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: desyco/vidbid-frontend
+  tag: 0.0.1
   pullPolicy: IfNotPresent
+ingress:
+  name: vidbid-frontend
+  ipAddressName: vidbid-ip
 service:
   name: vidbid-frontend
   type: ClusterIP
@@ -35,7 +38,7 @@ terminationGracePeriodSeconds: 10
 
 # Custom values
 configMap:
-  name: vidbid-admin-config-map
+  name: vidbid-config-map
 environment: test
 endpoints:
   orchestrator: https://vidbid.finance

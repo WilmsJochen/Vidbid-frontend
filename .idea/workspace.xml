@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first build pipeline">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/ingress.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/Chart.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/Chart.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/templates/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/charts/vidbid-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VidBid-plutus" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -75,7 +79,7 @@
       <workItem from="1638984908784" duration="10361000" />
       <workItem from="1639039661382" duration="18000" />
       <workItem from="1639046714508" duration="2702000" />
-      <workItem from="1639074099800" duration="4529000" />
+      <workItem from="1639074099800" duration="6806000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -140,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639078034511</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add first build pipeline">
+      <created>1639078670761</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1639078670761</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
