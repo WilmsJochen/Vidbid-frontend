@@ -78,7 +78,7 @@
       <workItem from="1639074099800" duration="10572000" />
       <workItem from="1639128466559" duration="17000" />
       <workItem from="1639137543963" duration="2095000" />
-      <workItem from="1639148472020" duration="12105000" />
+      <workItem from="1639148472020" duration="12477000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -199,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639175192449</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add first nami integration.">
+      <created>1639175823365</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1639175823365</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

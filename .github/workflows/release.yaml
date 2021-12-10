@@ -12,7 +12,7 @@ jobs:
     name: Release Docker image
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.bump_version.outputs.new_tag }}
+      VERSION: ${{ steps.bump_version.outputs.new_tag }}
       APP_NAME: ${{ steps.repository_name.outputs.value }}
     steps:
       - id: repository_name
@@ -77,14 +77,14 @@ jobs:
           credentials: ${{ secrets.GKE_SA_KEY }}
       - name: Update dependencies
         run: helm dependency update ${{ env.DIR }}
-      - name: Deploy preview
+      - name: Deploy FE
         timeout-minutes: 5
         run: |
           helm upgrade  \
             --create-namespace \
             --namespace ${{env.NAMESPACE }} \
             --install \
-            --set image.tag=${{ env.VERSION }} \
+            --set image.tag=${{ needs.build.outputs.VERSION }} \
             --cleanup-on-fail \
             --wait --timeout 3m \
             vidbid ${{ env.DIR }}
