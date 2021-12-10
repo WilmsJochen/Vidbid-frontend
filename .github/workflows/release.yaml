@@ -20,11 +20,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
         id: bump_version
-        uses: hennejg/github-tag-action@v4.3.1
-        with:
-          tag_prefix: ''
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "VERSION=${{ steps.bump_version.outputs.new_tag }}" >> $GITHUB_ENV
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: false
+          DEFAULT_BUMP: patch
       - uses: actions/setup-node@v2.2.0
         with:
           node-version: '14'
@@ -50,9 +50,9 @@ jobs:
       - name: Logging to docker registry
         run: docker login -u desyco -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: build docker image
-        run: docker build --tag desyco/vidbid-frontend:0.0.4 .
+        run: docker build --tag desyco/vidbid-frontend:${{ steps.bump_version.outputs.new_tag }} .
       - name: push docker image
-        run: docker push desyco/vidbid-frontend:0.0.4
+        run: docker push desyco/vidbid-frontend:${{ steps.bump_version.outputs.new_tag }}
   deploy:
     name: Deploy to gke
     runs-on: ubuntu-latest
@@ -84,7 +84,7 @@ jobs:
             --create-namespace \
             --namespace ${{env.NAMESPACE }} \
             --install \
-            --set preview.image.tag=${{ env.VERSION }} \
+            --set image.tag=${{ env.VERSION }} \
             --cleanup-on-fail \
             --wait --timeout 3m \
             vidbid ${{ env.DIR }}

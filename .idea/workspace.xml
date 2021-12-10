@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first nami integration.">
       <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +78,7 @@
       <workItem from="1639074099800" duration="10572000" />
       <workItem from="1639128466559" duration="17000" />
       <workItem from="1639137543963" duration="2095000" />
-      <workItem from="1639148472020" duration="10901000" />
+      <workItem from="1639148472020" duration="12105000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -191,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639174417438</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add first nami integration.">
+      <created>1639175192449</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1639175192449</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
