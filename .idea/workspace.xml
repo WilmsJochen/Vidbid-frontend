@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first nami integration.">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Fix bug of main menu selection and path.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Demo/index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="e6321c7831e9aaf7ee0310d9fd9c457aec0b9ea7" />
+  </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -23,6 +28,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="21oqj1wECxp2QMwLcJKpBj0OJ7i" />
   <component name="ProjectViewState">
@@ -35,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../theglue/accento/accentocredit-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -45,13 +53,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src/contextProviders" />
       <recent name="$PROJECT_DIR$/charts/vidbid-frontend" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/common/video/VideoActionButton" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/Team" />
+      <recent name="$PROJECT_DIR$/src/pages/Demo/images" />
       <recent name="$PROJECT_DIR$/src/common/video/videoActionButton" />
       <recent name="$PROJECT_DIR$/src/pages/HomePage" />
     </key>
@@ -78,6 +88,12 @@
       <workItem from="1639074099800" duration="10572000" />
       <workItem from="1639128466559" duration="17000" />
       <workItem from="1639137543963" duration="2095000" />
+      <workItem from="1639148472020" duration="13518000" />
+      <workItem from="1639215264348" duration="1168000" />
+      <workItem from="1639307533261" duration="5672000" />
+      <workItem from="1639397158986" duration="19000" />
+      <workItem from="1639426255480" duration="889000" />
+      <workItem from="1639509874521" duration="3879000" />
       <workItem from="1639148472020" duration="12477000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
@@ -206,7 +222,49 @@
       <option name="project" value="LOCAL" />
       <updated>1639175823365</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add first nami integration.">
+      <created>1639176183995</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1639176183995</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add first nami integration.">
+      <created>1639427066324</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1639427066324</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Update demo">
+      <created>1639511011385</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1639511011385</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Update card in team">
+      <created>1639512986256</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1639512986256</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Update card in team">
+      <created>1639513110137</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1639513110137</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fix bug of main menu selection and path.">
+      <created>1639513762846</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1639513762846</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +280,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="tmp commit." />
@@ -234,7 +291,10 @@
     <MESSAGE value="update dockerfile" />
     <MESSAGE value="Add chart templates." />
     <MESSAGE value="Add first nami integration." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add first nami integration." />
+    <MESSAGE value="Update demo" />
+    <MESSAGE value="Update card in team" />
+    <MESSAGE value="Fix bug of main menu selection and path." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug of main menu selection and path." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

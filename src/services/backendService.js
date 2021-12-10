@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from "qs";
 
 
-const baseURL = window && window._env_ ? window._env_.REACT_APP_BACKEND_URL : "http://localhost:3001";
+const baseURL = window && window._env_ ? window._env_.REACT_APP_BACKEND_URL : "http://localhost:8080";
 
 export default class ApiService {
     constructor() {
@@ -124,5 +124,10 @@ export default class ApiService {
                 status: "Closed"
             },
         ];
+    }
+    async getDemo(){
+        const url = '/demo'
+        const resp = await this.api.get(url)
+        return resp.data.data
     }
 }

@@ -6,6 +6,7 @@ import CombinedProvider from "./contextProviders/CombinedProvider";
 import MainMenu from "./common/MainMenu";
 import HomePage from "./pages/HomePage";
 import MyVidBidPage from "./pages/MyVidBid";
+import TeamPage from "./pages/Team";
 import globalCss from './css/globalStyle.css';
 
 
@@ -16,8 +17,9 @@ function App() {
             <MainMenu>
                 <Routes>
                     <Route exact path="/" element={<HomePage/>} />
-                    <Route exact path="/VidBid" element={<HomePage/>} />
-                    <Route exact path="/MyVidBid" element={<MyVidBidPage/>} />
+                    <Route exact path="/vidbid" element={<HomePage/>} />
+                    <Route exact path="/myvidbid" element={<MyVidBidPage/>} />
+                    <Route exact path="/team" element={<TeamPage/>} />
                 </Routes>
             </MainMenu>
         </Router>
