@@ -54,7 +54,7 @@ jobs:
       - name: push docker image
         run: docker push desyco/vidbid-frontend:0.0.4
   deploy:
-    name: Release Docker image
+    name: Deploy to gke
     runs-on: ubuntu-latest
     needs: [build]
     env:
