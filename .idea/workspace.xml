@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first nami integration.">
-      <change afterPath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyVidBid/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../theglue/accento/accentocredit-admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -86,7 +78,7 @@
       <workItem from="1639074099800" duration="10572000" />
       <workItem from="1639128466559" duration="17000" />
       <workItem from="1639137543963" duration="2095000" />
-      <workItem from="1639148472020" duration="8861000" />
+      <workItem from="1639148472020" duration="10719000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -186,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639085774075</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add first nami integration.">
+      <created>1639172347260</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1639172347260</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
