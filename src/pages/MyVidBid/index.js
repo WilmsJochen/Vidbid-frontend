@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
 import _ from 'lodash'
-import { Image,Header, Grid, Search } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import BackendService from "../../services/backendService";
 import VideoList from "../../common/video/VideoList";
 import {FavoriteVidsContext} from "../../contextProviders/FavoriteVidsProvider";

@@ -10,14 +10,11 @@ export function OwnedVidsProvider({children}) {
     useEffect(()=>{
         const fetchItems = async () => {
             const ownedVids = await backendService.getOwnedVids();
-            console.log("ownedVids")
-            console.log(ownedVids)
             setOwnedVidsList(ownedVids);
         }
         fetchItems().catch( e => console.log(e));
     },[setOwnedVidsList]);
-    console.log("ownedVidsList")
-    console.log(ownedVidsList)
+
     return (
         <OwnedVidsContext.Provider value={ownedVidsList}>
             {children}
