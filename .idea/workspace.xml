@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add first nami integration.">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Demo/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Team/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../theglue/accento/accentocredit-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -45,11 +51,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src/contextProviders" />
       <recent name="$PROJECT_DIR$/charts/vidbid-frontend" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/common/video/VideoActionButton" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/common/video/videoActionButton" />
@@ -78,7 +84,11 @@
       <workItem from="1639074099800" duration="10572000" />
       <workItem from="1639128466559" duration="17000" />
       <workItem from="1639137543963" duration="2095000" />
-      <workItem from="1639148472020" duration="12477000" />
+      <workItem from="1639148472020" duration="13518000" />
+      <workItem from="1639215264348" duration="1168000" />
+      <workItem from="1639307533261" duration="5672000" />
+      <workItem from="1639397158986" duration="19000" />
+      <workItem from="1639426255480" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -206,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639175823365</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add first nami integration.">
+      <created>1639176183995</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1639176183995</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

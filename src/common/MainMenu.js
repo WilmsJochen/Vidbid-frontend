@@ -7,15 +7,7 @@ import {FavoriteVidsContext, WalletContext} from "../contextProviders/WalletProv
 
 export default function MainMenu({ children }){
     const [activeItem, setActiveItem] = useState("VidBid")
-    const {isWalletConnected, connectWallet, disconnectWallet, walletAddress, balances, walletNetwork} = useContext(WalletContext)
-    console.log("isWalletConnected")
-    console.log(isWalletConnected)
-    console.log("balances")
-    console.log(balances)
-    console.log("walletNetwork")
-    console.log(walletNetwork)
-    console.log("walletAddress")
-    console.log(walletAddress)
+    const {isWalletConnected, connectWallet,balances, walletNetwork} = useContext(WalletContext)
     const navigate = useNavigate();
 
     const onMenuClick = (e, {name}) => {
@@ -46,6 +38,11 @@ export default function MainMenu({ children }){
                     active={activeItem === 'Team'}
                     onClick={onMenuClick}
                 />
+                {/*<Menu.Item*/}
+                {/*    name='Demo'*/}
+                {/*    active={activeItem === 'Demo'}*/}
+                {/*    onClick={onMenuClick}*/}
+                {/*/>*/}
                 <Menu.Menu position='right'>
                     {
                         isWalletConnected ?
