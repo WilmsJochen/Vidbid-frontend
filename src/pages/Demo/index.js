@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
 import styled, { keyframes } from 'styled-components'
+import {Header, Table} from "semantic-ui-react";
 
 import BackendService from "../../services/backendService";
-import {Header, Table} from "semantic-ui-react";
 
 const backendService = new BackendService();
 
@@ -61,27 +61,27 @@ export default function Demo() {
                 {demoObjects.map(demoObject => {
                     return (
                         <TableWrapper>
-                        <Table celled striped>
-                            <Table.Header>
-                                <Table.Row textAlign='center'>
-                                    <Table.HeaderCell colSpan='3'>{demoObject.name}</Table.HeaderCell>
-                                </Table.Row>
-                            </Table.Header>
-                            <Table.Body>
-                                {demoObject.subObjects.map(subObject => {
-                                    return(
-                                        <Table.Row>
-                                            <Table.Cell collapsing textAlign='center'>
-                                                {subObject.name}
-                                            </Table.Cell>
-                                            <Table.Cell collapsing textAlign='center'>
-                                                {subObject.title}
-                                            </Table.Cell>
-                                        </Table.Row>
-                                    )
-                                })}
-                            </Table.Body>
-                        </Table>
+                            <Table celled striped>
+                                <Table.Header>
+                                    <Table.Row textAlign='center'>
+                                        <Table.HeaderCell colSpan='3'>{demoObject.name}</Table.HeaderCell>
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    {demoObject.subObjects.map(subObject => {
+                                        return(
+                                            <Table.Row>
+                                                <Table.Cell collapsing textAlign='center'>
+                                                    {subObject.name}
+                                                </Table.Cell>
+                                                <Table.Cell collapsing textAlign='center'>
+                                                    {subObject.title}
+                                                </Table.Cell>
+                                            </Table.Row>
+                                        )
+                                    })}
+                                </Table.Body>
+                            </Table>
                         </TableWrapper>
                     )})}
         {/*    </Circle>*/}
