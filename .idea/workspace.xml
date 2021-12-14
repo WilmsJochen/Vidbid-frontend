@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Update card in team">
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Fix bug of main menu selection and path.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Team/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Team/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +17,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="e6321c7831e9aaf7ee0310d9fd9c457aec0b9ea7" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -88,7 +93,7 @@
       <workItem from="1639307533261" duration="5672000" />
       <workItem from="1639397158986" duration="19000" />
       <workItem from="1639426255480" duration="889000" />
-      <workItem from="1639509874521" duration="2984000" />
+      <workItem from="1639509874521" duration="3616000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -244,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639512986256</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Update card in team">
+      <created>1639513110137</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1639513110137</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +285,8 @@
     <MESSAGE value="Add first nami integration." />
     <MESSAGE value="Update demo" />
     <MESSAGE value="Update card in team" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update card in team" />
+    <MESSAGE value="Fix bug of main menu selection and path." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug of main menu selection and path." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

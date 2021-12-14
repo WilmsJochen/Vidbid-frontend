@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styled  from 'styled-components'
 import {Card, Image, Icon} from "semantic-ui-react";
 
@@ -8,19 +8,6 @@ const BadgeWrapper = styled.div`
 `
 
 export default function TeamPage() {
-    useEffect(() => {
-        const script = document.createElement('script');
-
-        script.src = 'https://platform.linkedin.com/badges/js/profile.js';
-        script.async = true;
-        script.defer = true;
-
-        document.getElementById("badge").appendChild(script);
-
-        return () => {
-            document.getElementById("badge").removeChild(script);
-        };
-    });
     return (
         <BadgeWrapper id={"badge"}>
             <Card>

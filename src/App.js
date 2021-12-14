@@ -18,9 +18,9 @@ function App() {
             <MainMenu>
                 <Routes>
                     <Route exact path="/" element={<HomePage/>} />
-                    <Route exact path="/VidBid" element={<HomePage/>} />
-                    <Route exact path="/MyVidBid" element={<MyVidBidPage/>} />
-                    <Route exact path="/Team" element={<TeamPage/>} />
+                    <Route exact path="/vidbid" element={<HomePage/>} />
+                    <Route exact path="/myvidbid" element={<MyVidBidPage/>} />
+                    <Route exact path="/team" element={<TeamPage/>} />
                     <Route exact path="/demo" element={<Demo/>} />
                 </Routes>
             </MainMenu>

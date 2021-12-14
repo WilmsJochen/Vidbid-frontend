@@ -1,13 +1,14 @@
-import React, { useState, useContext }  from "react";
+import React, { useState, useContext, useEffect }  from "react";
 import { Menu, Dropdown } from 'semantic-ui-react'
-import { useNavigate } from "react-router-dom";
-import {FavoriteVidsContext, WalletContext} from "../contextProviders/WalletProvider";
+import { useNavigate, useLocation } from "react-router-dom";
+import {WalletContext} from "../contextProviders/WalletProvider";
 
 
 
 export default function MainMenu({ children }){
-    const [activeItem, setActiveItem] = useState("VidBid")
-    const {isWalletConnected, connectWallet,balances, walletNetwork} = useContext(WalletContext)
+    const location = useLocation();
+    const [activeItem, setActiveItem] = useState("vidBid")
+    const {isWalletConnected, connectWallet,balances} = useContext(WalletContext)
     const navigate = useNavigate();
 
     const onMenuClick = (e, {name}) => {
@@ -15,27 +16,31 @@ export default function MainMenu({ children }){
         navigate("/"+name.toLowerCase());
     }
 
+    useEffect(()=>{
+        setActiveItem(location.pathname.split("/")[1]);
+    },[setActiveItem,location]);
+
     return (
         <>
             <Menu inverted >
                 <Menu.Item
-                    name='VidBid'
-                    active={activeItem === 'VidBid'}
+                    name='vidbid'
+                    active={activeItem === 'vidbid'}
                     onClick={onMenuClick}
                 />
                 <Menu.Item
-                    name='MyVidBid'
-                    active={activeItem === 'MyVidBid'}
+                    name='myvidbid'
+                    active={activeItem === 'myvidbid'}
                     onClick={onMenuClick}
                 />
                 <Menu.Item
-                    name='FAQ'
-                    active={activeItem === 'FAQ'}
+                    name='faq'
+                    active={activeItem === 'faq'}
                     onClick={onMenuClick}
                 />
                 <Menu.Item
-                    name='Team'
-                    active={activeItem === 'Team'}
+                    name='team'
+                    active={activeItem === 'team'}
                     onClick={onMenuClick}
                 />
                 {/*<Menu.Item*/}
