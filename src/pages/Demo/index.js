@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled, { keyframes } from 'styled-components'
 
 import BackendService from "../../services/backendService";
-import {Header} from "semantic-ui-react";
+import {Header, Table} from "semantic-ui-react";
 
 const backendService = new BackendService();
 
@@ -14,8 +14,8 @@ const breatheAnimation = keyframes`
   100% { height: 100px; width: 100px; opacity: 0.6; }
 `
 const Circle = styled.div`
- height: 100px;
- width: 100px;
+ height: 500px;
+ width: 500px;
  border-style: solid;
  border-width: 5px;
  border-color: black;
@@ -30,6 +30,11 @@ const Container = styled.div`
  flex-direction: column;
  height: 450px;
 `
+const TableWrapper = styled.div`
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+`
 
 export default function Demo() {
     const { t } = useTranslation();
@@ -40,6 +45,7 @@ export default function Demo() {
         const fetchVids = async () => {
             try{
                 const resp = await backendService.getDemo();
+                console.log(resp)
                 setDemoObjects(resp)
             }catch (e) {
                 console.log(e)
@@ -53,21 +59,30 @@ export default function Demo() {
         {/*<Container>*/}
         {/*    <Circle>*/}
                 {demoObjects.map(demoObject => {
-                    return (<div>
-                        <Header>{demoObject.name}</Header>
-                        <table>
-                            {Object.keys(demoObject.subObjects).map(subObjectKey => {
-                                console.log(demoObject)
-                                console.log(subObjectKey)
-                                return (
-                                    <tr>
-                                        <td>{subObjectKey}</td>
-                                        <td>{demoObject.subObjects[subObjectKey]}</td>
-                                    </tr>
-                                )
-                            })}
-                        </table>
-                    </div>
+                    return (
+                        <TableWrapper>
+                        <Table celled striped>
+                            <Table.Header>
+                                <Table.Row textAlign='center'>
+                                    <Table.HeaderCell colSpan='3'>{demoObject.name}</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {demoObject.subObjects.map(subObject => {
+                                    return(
+                                        <Table.Row>
+                                            <Table.Cell collapsing textAlign='center'>
+                                                {subObject.name}
+                                            </Table.Cell>
+                                            <Table.Cell collapsing textAlign='center'>
+                                                {subObject.title}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    )
+                                })}
+                            </Table.Body>
+                        </Table>
+                        </TableWrapper>
                     )})}
         {/*    </Circle>*/}
         {/*</Container>*/}
