@@ -7,6 +7,7 @@ import MainMenu from "./common/MainMenu";
 import HomePage from "./pages/HomePage";
 import MyVidBidPage from "./pages/MyVidBid";
 import TeamPage from "./pages/Team";
+import FaqPage from "./pages/Faq";
 import RoadMapPage from "./pages/RoadMap";
 import globalCss from './css/globalStyle.css';
 
@@ -21,6 +22,7 @@ function App() {
                     <Route exact path="/vidbid" element={<HomePage/>} />
                     <Route exact path="/myvidbid" element={<MyVidBidPage/>} />
                     <Route exact path="/team" element={<TeamPage/>} />
+                    <Route exact path="/faq" element={<FaqPage/>} />
                     <Route exact path="/roadmap" element={<RoadMapPage/>} />
                 </Routes>
             </MainMenu>

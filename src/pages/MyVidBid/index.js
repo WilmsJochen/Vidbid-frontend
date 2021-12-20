@@ -20,7 +20,7 @@ export default function MyVidBidPage() {
         <div>
             <HeaderWrapper>
                 <Header as='h2'>
-                    MyVids
+                    My Video
                     <Header.Subheader>
                         Video's that i own.
                     </Header.Subheader>
@@ -31,7 +31,7 @@ export default function MyVidBidPage() {
                 <Header as='h2'>
                     Favorites
                     <Header.Subheader>
-                        My favorite videos
+                        Starred videos that i like to follow.
                     </Header.Subheader>
                 </Header>
             </HeaderWrapper>
