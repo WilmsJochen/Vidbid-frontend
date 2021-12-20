@@ -27,22 +27,30 @@ export default function MainMenu({ children }){
                     name='vidbid'
                     active={activeItem === 'vidbid'}
                     onClick={onMenuClick}
-                />
+                >
+                    VidBid
+                </Menu.Item>
                 <Menu.Item
                     name='myvidbid'
                     active={activeItem === 'myvidbid'}
                     onClick={onMenuClick}
-                />
+                >
+                    My VidBid
+                </Menu.Item>
                 <Menu.Item
                     name='faq'
                     active={activeItem === 'faq'}
                     onClick={onMenuClick}
-                />
+                >
+                    FAQ
+                </Menu.Item>
                 <Menu.Item
                     name='team'
                     active={activeItem === 'team'}
                     onClick={onMenuClick}
-                />
+                >
+                    Team
+                </Menu.Item>
                 <Menu.Menu position='right'>
                     {
                         isWalletConnected ?

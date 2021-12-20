@@ -1,21 +1,22 @@
-import React, { useContext, useState, useEffect }  from "react";
-import { Grid, Dimmer, Loader } from 'semantic-ui-react'
+import React  from "react";
+import { Grid } from 'semantic-ui-react'
 import styled from "styled-components";
 
 import VideoCard from "./VideoCard";
-import {Top5VidsContext}  from "../../contextProviders/Top5VidsProvider";
-import {AllVidsContext}  from "../../contextProviders/AllVidsProvider";
 
 const VideoCardWrapper = styled.div`
   margin-left : 10%;
   margin-right : 10%;
 `
 
+const NoVidsWrapper = styled.div`
+  margin-left : 2%;
+`
 
 export default function VideoList({vidList = []}){
     if(vidList === null || vidList.length === 0){
       return (
-          <div>no vids</div>
+          <NoVidsWrapper>no vids</NoVidsWrapper>
       )
     }else {
         return (
