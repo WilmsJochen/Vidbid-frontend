@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add certificate for ssl.">
-      <change afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/https-redirect.yaml" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Add http redirect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/vidbid-frontend/templates/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/charts/vidbid-frontend/templates/ingress.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,7 @@
       <workItem from="1639730852272" duration="195000" />
       <workItem from="1639746085245" duration="599000" />
       <workItem from="1640004590961" duration="130000" />
-      <workItem from="1640439053857" duration="1769000" />
+      <workItem from="1640439053857" duration="2180000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -291,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640439186047</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add http redirect">
+      <created>1640440912679</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1640440912679</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +331,8 @@
     <MESSAGE value="Add initial roadmap." />
     <MESSAGE value="Add first draft of FAQ" />
     <MESSAGE value="Add certificate for ssl." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add certificate for ssl." />
+    <MESSAGE value="Add http redirect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add http redirect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
