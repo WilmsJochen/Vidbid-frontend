@@ -1,5 +1,5 @@
-import React, { useState,useContext }  from "react";
-import {Button, Card, Grid, Icon} from 'semantic-ui-react'
+import React, { useContext }  from "react";
+import {Card, Grid, Icon} from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import {FavoriteVidsContext}  from "../../contextProviders/FavoriteVidsProvider";
@@ -21,6 +21,7 @@ const StarWrapper = styled.div`
 `
 
 export default function VideoCard({video}){
+    // eslint-disable-next-line no-unused-vars
     const [favoriteVids, setFavoriteVids, addFavoriteVid,deleteFavoriteVid]= useContext(FavoriteVidsContext)
     const isFavoriteVid = favoriteVids.map(vid => vid.id).includes(video.id);
     const removeFromFavorites = () => {

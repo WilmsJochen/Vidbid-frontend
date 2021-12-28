@@ -1,5 +1,4 @@
 import React,{ createContext, useState, useEffect} from 'react';
-import BackendService from "../services/backendService";
 
 export const FavoriteVidsContext = createContext();
 

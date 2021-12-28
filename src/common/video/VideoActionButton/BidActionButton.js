@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Form, Checkbox, Grid, Header, Icon, Image, Modal} from 'semantic-ui-react'
+import {Button, Form, Grid, Header, Icon, Modal} from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import VideoFrame  from "../VideoFrame";

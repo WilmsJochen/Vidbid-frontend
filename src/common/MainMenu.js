@@ -8,7 +8,7 @@ import {WalletContext} from "../contextProviders/WalletProvider";
 export default function MainMenu({ children }){
     const location = useLocation();
     const [activeItem, setActiveItem] = useState("vidBid")
-    const {isWalletConnected, connectWallet,balances} = useContext(WalletContext)
+    const {isWalletConnected, connectWallet, walletAddress, balances} = useContext(WalletContext)
     const navigate = useNavigate();
 
     const onMenuClick = (e, {name}) => {
@@ -58,6 +58,7 @@ export default function MainMenu({ children }){
 
                             >
                                 <Dropdown.Menu>
+                                    <Dropdown.Item>Address: {walletAddress} </Dropdown.Item>
                                     <Dropdown.Item>ADA: {balances[0]/1000000} </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown> :

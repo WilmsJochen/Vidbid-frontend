@@ -1,6 +1,4 @@
 import React, { useContext }  from "react";
-import {Button} from 'semantic-ui-react'
-import styled from 'styled-components'
 import {OwnedVidsContext} from "../../../contextProviders/OwnedVidsProvider";
 import OpenActionButton from "./OpenActionButton";
 import BidActionButton from "./BidActionButton";

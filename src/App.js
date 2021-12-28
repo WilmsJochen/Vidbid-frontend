@@ -9,6 +9,7 @@ import MyVidBidPage from "./pages/MyVidBid";
 import TeamPage from "./pages/Team";
 import FaqPage from "./pages/Faq";
 import RoadMapPage from "./pages/RoadMap";
+// eslint-disable-next-line no-unused-vars
 import globalCss from './css/globalStyle.css';
 
 
