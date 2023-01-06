@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Cleanup warning and add readable wallet address">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/CombinedProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/FavoriteVidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/FavoriteVidsProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n/translations/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/translations/nl.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +37,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="sharedservices-development-cluster-admin" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -58,20 +49,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="TF_FMT" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../plutus-apps/plutus-pab/demo/pab-nami/client" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/desyco/projects/desyco/vidbid/Vidbid-frontend",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages" />
@@ -124,6 +109,10 @@
       <workItem from="1640643106259" duration="8000" />
       <workItem from="1640645674780" duration="1665000" />
       <workItem from="1640690287508" duration="7837000" />
+      <workItem from="1648048131518" duration="300000" />
+      <workItem from="1648555795403" duration="3896000" />
+      <workItem from="1648729417026" duration="599000" />
+      <workItem from="1673039725330" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>

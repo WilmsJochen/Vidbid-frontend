@@ -53,38 +53,38 @@ jobs:
         run: docker build --tag desyco/vidbid-frontend:${{ steps.bump_version.outputs.new_tag }} .
       - name: push docker image
         run: docker push desyco/vidbid-frontend:${{ steps.bump_version.outputs.new_tag }}
-  deploy:
-    name: Deploy to gke
-    runs-on: ubuntu-latest
-    needs: [build]
-    env:
-      DIR: ./charts/vidbid-frontend
-      NAMESPACE: staging
-    steps:
-      - uses: actions/checkout@v2
-      - uses: azure/setup-helm@v1
-        id: install-helm
-      # Setup gcloud CLI
-      - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
-        with:
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
-          project_id: ${{ secrets.GKE_PROJECT }}
-      # Get the GKE credentials so we can deploy to the cluster
-      - uses: google-github-actions/get-gke-credentials@fb08709ba27618c31c09e014e1d8364b02e5042e
-        with:
-          cluster_name: ${{ env.GKE_CLUSTER }}
-          location: ${{ env.GKE_ZONE }}
-          credentials: ${{ secrets.GKE_SA_KEY }}
-      - name: Update dependencies
-        run: helm dependency update ${{ env.DIR }}
-      - name: Deploy FE
-        timeout-minutes: 5
-        run: |
-          helm upgrade  \
-            --create-namespace \
-            --namespace ${{env.NAMESPACE }} \
-            --install \
-            --set image.tag=${{ needs.build.outputs.VERSION }} \
-            --cleanup-on-fail \
-            --wait --timeout 3m \
-            vidbid ${{ env.DIR }}
+#  deploy:
+#    name: Deploy to gke
+#    runs-on: ubuntu-latest
+#    needs: [build]
+#    env:
+#      DIR: ./charts/vidbid-frontend
+#      NAMESPACE: staging
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: azure/setup-helm@v1
+#        id: install-helm
+#      # Setup gcloud CLI
+#      - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
+#        with:
+#          service_account_key: ${{ secrets.GKE_SA_KEY }}
+#          project_id: ${{ secrets.GKE_PROJECT }}
+#      # Get the GKE credentials so we can deploy to the cluster
+#      - uses: google-github-actions/get-gke-credentials@fb08709ba27618c31c09e014e1d8364b02e5042e
+#        with:
+#          cluster_name: ${{ env.GKE_CLUSTER }}
+#          location: ${{ env.GKE_ZONE }}
+#          credentials: ${{ secrets.GKE_SA_KEY }}
+#      - name: Update dependencies
+#        run: helm dependency update ${{ env.DIR }}
+#      - name: Deploy FE
+#        timeout-minutes: 5
+#        run: |
+#          helm upgrade  \
+#            --create-namespace \
+#            --namespace ${{env.NAMESPACE }} \
+#            --install \
+#            --set image.tag=${{ needs.build.outputs.VERSION }} \
+#            --cleanup-on-fail \
+#            --wait --timeout 3m \
+#            vidbid ${{ env.DIR }}
