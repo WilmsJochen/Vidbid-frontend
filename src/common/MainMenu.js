@@ -8,7 +8,7 @@ import {WalletContext} from "../contextProviders/WalletProvider";
 export default function MainMenu({ children }){
     const location = useLocation();
     const [activeItem, setActiveItem] = useState("vidBid")
-    const {isWalletConnected, connectWallet, walletAddress, balances} = useContext(WalletContext)
+    const {isWalletConnected, connectWallet, walletInfo} = useContext(WalletContext)
     const navigate = useNavigate();
 
     const onMenuClick = (e, {name}) => {
@@ -19,6 +19,7 @@ export default function MainMenu({ children }){
     useEffect(()=>{
         setActiveItem(location.pathname.split("/")[1]);
     },[setActiveItem,location]);
+
 
     return (
         <>
@@ -58,8 +59,14 @@ export default function MainMenu({ children }){
 
                             >
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Address: {walletAddress} </Dropdown.Item>
-                                    <Dropdown.Item>ADA: {balances[0]/1000000} </Dropdown.Item>
+                                    <Dropdown.Item>Address: {walletInfo?.changeAddress} </Dropdown.Item>
+                                    <Dropdown.Item>ADA: {walletInfo?.balances?.default} </Dropdown.Item>
+                                    {
+                                        walletInfo?.balances?.assets && Object.keys(walletInfo?.balances?.assets).map(assetId => {
+                                            console.log(assetId)
+                                            return <Dropdown.Item>{walletInfo?.balances?.assets[assetId].name}: {walletInfo?.balances?.assets[assetId].amount} </Dropdown.Item>
+                                        })
+                                    }
                                 </Dropdown.Menu>
                             </Dropdown> :
                             <Menu.Item

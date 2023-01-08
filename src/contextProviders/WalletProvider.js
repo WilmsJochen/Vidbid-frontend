@@ -1,81 +1,43 @@
 import React,{ createContext, useState, useEffect} from 'react';
-import cbor from 'cbor'
-
+import { getWalletBalances, walletReturnType, getChangeAddress } from '../utils/cardanoUtils';
+import CardanoService from '../services/CardanoService';
 export const WalletContext = createContext();
 
-export function WalletProvider({children}) {
+const supportedWallets = [
+    "yoroi"
+]
 
-    const wallet = window.cardano
+export function WalletProvider({children}) {
+    const cardanoService = new CardanoService();
 
     const [isWalletConnected, setIsWalletConnected] =  useState(false)
-    const [walletAddress, setWalletAddress] =  useState("")
-    const [balances, setBalances] =  useState({})
-    const [walletNetwork, setWalletNetwork] =  useState("testnet")
-    const [walletId, setWalletId] =  useState("testnet")
+    const [walletInfo, setWalletInfo] =  useState("")
 
-    const connectWallet = () =>{
-        wallet.enable();
+    const connectWallet = async () =>{
+        await cardanoService.connectWallet();
     }
-    const disconnectWallet = () =>{
-        //TODO
-        console.log("TODO")
+    const disconnectWallet = async () =>{
+        await cardanoService.disconnectWallet();
     }
-
-    const getWalletId = async () =>{
-        const walletUsedAddresses = await wallet.getUsedAddresses();
-        const walletUnusedAddresses = await wallet.getUnusedAddresses();
-        const addresses = walletUnusedAddresses.concat(walletUsedAddresses)
-        return require('blake2b')(20)
-            .update(Buffer.from(addresses.map(a => a.to_bech32).join('')))
-            .digest('hex')
-    }
-
-
-    // const logYoroiKeys = async () =>{
-    //     const api = await wallet.yoroi.enable();
-    //     const walletUnusedAddresses = await api.getUnusedAddresses();
-    //
-    //     walletUnusedAddresses.forEach(addr =>{
-    //         cbor.decodeFirst(addr, (error, balanceObj) => {
-    //             if(balanceObj) console.log(balanceObj.toString());
-    //         })
-    //     })
-    //
-    //
-    // }
 
     useEffect(()=>{
         const fetchItems = async () => {
-            const S = await import('@emurgo/cardano-serialization-lib-asmjs')
-
-            const isConnected = await wallet.isEnabled();
+            const isConnected = await cardanoService.isWalletConnected();
             setIsWalletConnected(isConnected);
-            const hexAddress = await wallet.getChangeAddress()
-            const address = S.Address.from_bytes(
-                Buffer.from(
-                    hexAddress,
-                    'hex'
-                )
-            ).to_bech32()
-            setWalletAddress(address)
 
-            const balanceCBOR = await wallet.getBalance();
-            cbor.decodeFirst(balanceCBOR, (error, balanceObj) => {
-                console.log(balanceObj.toString())
-                setBalances(balanceObj)
-            })
-            const networkId = await wallet.getNetworkId()
-            networkId === 1 ? setWalletNetwork("mainnet"): setWalletNetwork("testnet")
+            if(isConnected){
+                const walletVar = await cardanoService.getWalletInfo();
+                setWalletInfo(walletVar)
+            }
 
-            const walletId = await getWalletId();
-            setWalletId(walletId)
+            // console.log(isWalletConnected, connectWallet, disconnectWallet, walletAddress, balances, walletNetwork, walletId)
             // await logYoroiKeys();
         }
         fetchItems().catch( e => console.log(e));
-    },[wallet, setWalletId, setIsWalletConnected, setWalletAddress, setBalances, setWalletNetwork, getWalletId]);
+    },[isWalletConnected]);
 
     return (
-        <WalletContext.Provider value={{isWalletConnected, connectWallet, disconnectWallet, walletAddress, balances, walletNetwork, walletId}}>
+        <WalletContext.Provider value={{isWalletConnected, connectWallet, disconnectWallet, walletInfo, cardanoService}}>
             {children}
         </WalletContext.Provider>
     );

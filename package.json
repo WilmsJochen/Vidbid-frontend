@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emurgo/cardano-serialization-lib-asmjs": "^9.1.2",
+    "@emurgo/cardano-serialization-lib-asmjs": "^11.1.1",
+    "@emurgo/cardano-serialization-lib-browser": "^11.1.1",
+    "@emurgo/cardano-serialization-lib-nodejs": "^11.1.1",
     "blake2b": "^2.1.4",
     "cbor": "^8.1.0",
     "date-fns": "^2.27.0",
@@ -12,7 +14,6 @@
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "msal": "^1.4.15",
     "qs": "^6.10.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -27,8 +28,8 @@
     "styled-components": "^5.3.3"
   },
   "scripts": {
-    "start": "react-scripts  --max_old_space_size=4096  start",
-    "build": "react-scripts  --max_old_space_size=4096  build",
+    "start": "react-scripts  --max_old_space_size=5120  start",
+    "build": "react-scripts  --max_old_space_size=5120  build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,11 +52,9 @@
     ]
   },
   "devDependencies": {
-    "@emurgo/cardano-serialization-lib-browser": "^9.1.2",
-    "@emurgo/cardano-serialization-lib-nodejs": "^9.1.2",
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "axios": "^0.24.0",
-    "i18next": "^19.8.3",
+    "i18next": "^21.10.0",
     "i18next-browser-languagedetector": "^6.0.1",
     "semantic-ui-react": "^2.0.4"
   }
