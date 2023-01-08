@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="disable deploy.">
-      <change afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Adding support for yoroi.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,7 @@
       <workItem from="1648555795403" duration="3896000" />
       <workItem from="1648729417026" duration="599000" />
       <workItem from="1673039725330" duration="8916000" />
-      <workItem from="1673187910053" duration="11259000" />
+      <workItem from="1673187910053" duration="17786000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -330,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673039761032</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Adding support for yoroi.">
+      <created>1673199283858</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1673199283858</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +371,8 @@
     <MESSAGE value="Add http redirect" />
     <MESSAGE value="Cleanup warning and add readable wallet address" />
     <MESSAGE value="disable deploy." />
-    <option name="LAST_COMMIT_MESSAGE" value="disable deploy." />
+    <MESSAGE value="Adding support for yoroi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding support for yoroi." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

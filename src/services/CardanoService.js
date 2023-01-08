@@ -1,11 +1,18 @@
-import {addressesFromCborIfNeeded, hexToBytes, reduceWasmMultiasset, walletReturnType} from '../utils/cardanoUtils';
+import {
+    addressesFromCborIfNeeded,
+    getOutputHexFromUtxo,
+    hexToBytes,
+    reduceWasmMultiasset,
+    mapCborUtxos,
+    walletReturnType, getTransactionHex
+} from '../utils/cardanoUtils';
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
 const supportedWallets = [
     "yoroi"
 ];
 
-export default class CardanoService {
+class CardanoService {
     constructor() {
         this.wallet = this.getFirstSupportedWallet();
     }
@@ -92,11 +99,48 @@ export default class CardanoService {
     }
 
     async getUtxos(){
-        return await this.walletApi.getUtxos()
-    }
-    async getRandomUtxo(){
-        const utxos = await this.getUtxos();
-        return utxos[Math.floor(Math.random() * utxos.length)];
+        return await this.walletApi?.getUtxos()
     }
 
+    async getRandomUtxo(){
+        const utxosCbor = await this.getUtxos()
+        const utxos = mapCborUtxos(utxosCbor);
+        const utxo = utxos[Math.floor(Math.random() * utxos.length)];
+        console.log(utxo)
+        const outputHex = getOutputHexFromUtxo(utxo)
+        return {utxo, outputHex}
+    }
+
+    async createTx(txReq){
+        try{
+            return await this.walletApi.experimental.createTx(txReq, true)
+        }catch(e){
+            console.log("couldn't build tx")
+            console.error(e);
+            throw e;
+        }
+    }
+
+    async signTx(unsignedTx){
+        try{
+            const witnessSetHex = await this.walletApi.signTx(unsignedTx)
+            return getTransactionHex(witnessSetHex, unsignedTx)
+        }catch(e){
+            console.log("couldn't sign tx")
+            console.error(e);
+            throw e;
+        }
+    }
+    async submitTx(signedTx){
+        try{
+            return await this.walletApi.submitTx(signedTx)
+        }catch(e){
+            console.log("couldn't submit tx")
+            console.error(e);
+            throw e;
+        }
+    }
 }
+
+const cardanoService = new CardanoService();
+export default cardanoService;

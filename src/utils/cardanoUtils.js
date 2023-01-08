@@ -4,6 +4,11 @@ import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
 export const walletReturnType = "cbor";
 
+const Bech32Prefix = {
+    ADDRESS: "addr",
+    PAYMENT_KEY_HASH: "addr_vkh"
+};
+
 export function isCBOR() {
     return walletReturnType === "cbor";
 }
@@ -111,4 +116,84 @@ export function reduceWasmMultiasset(multiasset, reducer, initValue) {
         }
     }
     return result;
+}
+
+export function getTxBuilder() {
+    return CardanoWasm.TransactionBuilder.new(
+        CardanoWasm.TransactionBuilderConfigBuilder.new()
+            // all of these are taken from the mainnet genesis settings
+            // linear fee parameters (a*size + b)
+            .fee_algo(
+                CardanoWasm.LinearFee.new(
+                    CardanoWasm.BigNum.from_str("44"),
+                    CardanoWasm.BigNum.from_str("155381")
+                )
+            )
+            .coins_per_utxo_word(CardanoWasm.BigNum.from_str('34482'))
+            .pool_deposit(CardanoWasm.BigNum.from_str('500000000'))
+            .key_deposit(CardanoWasm.BigNum.from_str('2000000'))
+            .ex_unit_prices(CardanoWasm.ExUnitPrices.new(
+                CardanoWasm.UnitInterval.new(CardanoWasm.BigNum.from_str("577"), CardanoWasm.BigNum.from_str("10000")),
+                CardanoWasm.UnitInterval.new(CardanoWasm.BigNum.from_str("721"), CardanoWasm.BigNum.from_str("10000000"))
+            ))
+            .max_value_size(5000)
+            .max_tx_size(16384)
+            .build()
+    );
+}
+
+export function getOutputHexFromUtxo(utxo){
+    return bytesToHex(
+        CardanoWasm.TransactionOutput.new(
+            CardanoWasm.Address.from_bech32(utxo.receiver),
+            CardanoWasm.Value.new(CardanoWasm.BigNum.from_str("1000000"))
+        ).to_bytes()
+    );
+}
+
+export function convertAssetNameToHEX(name) {
+    return bytesToHex(name);
+}
+
+export function getScriptHexFromAddress(address){
+    console.log(address)
+    const keyHash = CardanoWasm.BaseAddress.from_address(
+        CardanoWasm.Address.from_bech32(address)
+    ).payment_cred().to_keyhash();
+    console.log(keyHash);
+
+    const keyHashBech = keyHash.to_bech32(Bech32Prefix.PAYMENT_KEY_HASH);
+    console.log(keyHashBech)
+
+    const scripts = CardanoWasm.NativeScripts.new();
+    scripts.add(
+        CardanoWasm.NativeScript.new_script_pubkey(
+            CardanoWasm.ScriptPubkey.new(keyHash)
+        )
+    );
+    scripts.add(
+        CardanoWasm.NativeScript.new_timelock_start(
+            CardanoWasm.TimelockStart.new(42)
+        )
+    );
+
+    const mintScript = CardanoWasm.NativeScript.new_script_all(
+        CardanoWasm.ScriptAll.new(scripts)
+    );
+    return bytesToHex(mintScript.to_bytes());
+}
+
+export function getTransactionHex(witnessSetHex, unsignedTransactionHex){
+    const witnessSet = CardanoWasm.TransactionWitnessSet.from_bytes(
+        hexToBytes(witnessSetHex)
+    );
+    const tx = CardanoWasm.Transaction.from_bytes(
+        hexToBytes(unsignedTransactionHex)
+    );
+    const transaction = CardanoWasm.Transaction.new(
+        tx.body(),
+        witnessSet,
+        tx.auxiliary_data(),
+    );
+    return bytesToHex(transaction.to_bytes())
 }
