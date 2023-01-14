@@ -1,10 +1,11 @@
 import {
     addressesFromCborIfNeeded,
     getOutputHexFromUtxo,
+    getTransactionHex,
     hexToBytes,
-    reduceWasmMultiasset,
     mapCborUtxos,
-    walletReturnType, getTransactionHex
+    reduceWasmMultiasset,
+    walletReturnType
 } from '../utils/cardanoUtils';
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
@@ -83,10 +84,17 @@ class CardanoService {
         return balances
     }
 
-    async getChangeAddress () {
-        const changeAddressCbor = await this.walletApi?.getChangeAddress()
-        return addressesFromCborIfNeeded([changeAddressCbor]);
+    async getCollateral () {
+        return this.walletApi.getCollateral();
+    }
 
+    async getChangeAddress(){
+        try {
+            const raw = await this.walletApi.getChangeAddress();
+            return CardanoWasm.Address.from_bytes(Buffer.from(raw, "hex")).to_bech32()
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     async getUsedAddresses(){
@@ -99,32 +107,42 @@ class CardanoService {
     }
 
     async getUtxos(){
-        return await this.walletApi?.getUtxos()
+        let utxosCbor = await this.walletApi?.getUtxos()
+        let retries = 0
+        while(retries < 3 && (!utxosCbor || utxosCbor.length === 0)){
+            console.log(utxosCbor)
+            console.log(retries)
+            retries ++;
+            utxosCbor = await this.walletApi?.getUtxos()
+        }
+        return mapCborUtxos(utxosCbor)
     }
 
     async getRandomUtxo(){
-        const utxosCbor = await this.getUtxos()
-        const utxos = mapCborUtxos(utxosCbor);
-        const utxo = utxos[Math.floor(Math.random() * utxos.length)];
-        console.log(utxo)
+        const utxos = await this.getUtxos();
+        const utxo = utxos.filter(utxo => Number(utxo.amount) > 100000)[Math.floor(Math.random() * utxos.length)];
         const outputHex = getOutputHexFromUtxo(utxo)
         return {utxo, outputHex}
     }
 
-    async createTx(txReq){
+    async signTx(txBuilder){
         try{
-            return await this.walletApi.experimental.createTx(txReq, true)
-        }catch(e){
-            console.log("couldn't build tx")
-            console.error(e);
-            throw e;
-        }
-    }
+            const txBody = txBuilder.build();
+            // Tx witness
+            const transactionWitnessSet = CardanoWasm.TransactionWitnessSet.new();
+            const unsignedTx = CardanoWasm.Transaction.new(
+                txBody,
+                CardanoWasm.TransactionWitnessSet.from_bytes(transactionWitnessSet.to_bytes())
+            )
+            let txVkeyWitnesses = await this.walletApi.signTx(Buffer.from(unsignedTx.to_bytes(), "utf8").toString("hex"), true);
+            txVkeyWitnesses = CardanoWasm.TransactionWitnessSet.from_bytes(Buffer.from(txVkeyWitnesses, "hex"));
+            transactionWitnessSet.set_vkeys(txVkeyWitnesses.vkeys());
 
-    async signTx(unsignedTx){
-        try{
-            const witnessSetHex = await this.walletApi.signTx(unsignedTx)
-            return getTransactionHex(witnessSetHex, unsignedTx)
+            return CardanoWasm.Transaction.new(
+                unsignedTx.body(),
+                transactionWitnessSet
+            );
+
         }catch(e){
             console.log("couldn't sign tx")
             console.error(e);
@@ -133,7 +151,7 @@ class CardanoService {
     }
     async submitTx(signedTx){
         try{
-            return await this.walletApi.submitTx(signedTx)
+            return await this.walletApi.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         }catch(e){
             console.log("couldn't submit tx")
             console.error(e);

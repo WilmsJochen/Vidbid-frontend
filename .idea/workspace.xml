@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Adding support for yoroi.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backendService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
     </list>
@@ -57,7 +56,7 @@
   "keyToString": {
     "TF_FMT": "false",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/desyco/projects/desyco/vidbid/Vidbid-frontend/src/services",
+    "last_opened_file_path": "/home/desyco/projects/desyco/cardano/cardano-wallet-connector",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -123,6 +122,10 @@
       <workItem from="1648729417026" duration="599000" />
       <workItem from="1673039725330" duration="8916000" />
       <workItem from="1673187910053" duration="17786000" />
+      <workItem from="1673267356180" duration="98000" />
+      <workItem from="1673291951992" duration="1917000" />
+      <workItem from="1673340373038" duration="643000" />
+      <workItem from="1673697029287" duration="10209000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>

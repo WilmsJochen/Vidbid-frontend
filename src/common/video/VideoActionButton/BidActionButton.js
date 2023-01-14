@@ -28,7 +28,13 @@ export default function BidActionButton({video}){
     }
 
     const handleSubmit = async () =>{
-        await vidbidContractService.mintToken();
+        try{
+            console.log(formState)
+            await vidbidContractService.mintToken(formState.bidPrice);
+        }catch (e){
+            alert("Something went wrong.")
+            console.log(e)
+        }
         setOpen(false)
     }
     //TODO: investigate use of formik.

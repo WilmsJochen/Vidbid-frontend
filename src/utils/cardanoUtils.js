@@ -9,6 +9,21 @@ const Bech32Prefix = {
     PAYMENT_KEY_HASH: "addr_vkh"
 };
 
+const protocolParams = {
+    linearFee: {
+        minFeeA: "44",
+        minFeeB: "155381",
+    },
+    minUtxo: "34482",
+    poolDeposit: "500000000",
+    keyDeposit: "2000000",
+    maxValSize: 5000,
+    maxTxSize: 16384,
+    priceMem: 0.0577,
+    priceStep: 0.0000721,
+    coinsPerUtxoWord: "34482",
+}
+
 export function isCBOR() {
     return walletReturnType === "cbor";
 }
@@ -46,6 +61,7 @@ export function mapCborUtxos(cborUtxos) {
         const value = output.amount();
         return {
             utxo_id: `${txHash}${txIndex}`,
+            transactionUnspentOutput: u,
             tx_hash: txHash,
             tx_index: txIndex,
             receiver: output.address().to_bech32(),
@@ -61,38 +77,6 @@ export function mapCborUtxos(cborUtxos) {
         };
     });
 }
-
-export function valueRequestObjectToWasmHex(requestObj) {
-    const { amount, assets } = requestObj;
-    const result = CardanoWasm.Value.new(
-        CardanoWasm.BigNum.from_str(String(amount))
-    );
-    if (assets != null) {
-        if (typeof assets !== "object") {
-            throw "Assets is expected to be an object like `{ [policyId]: { [assetName]: amount } }`";
-        }
-        const wmasset = CardanoWasm.MultiAsset.new();
-        for (const [policyId, assets2] of Object.entries(assets)) {
-            if (typeof assets2 !== "object") {
-                throw "Assets is expected to be an object like `{ [policyId]: { [assetName]: amount } }`";
-            }
-            const wassets = CardanoWasm.Assets.new();
-            for (const [assetName, amount] of Object.entries(assets2)) {
-                wassets.insert(
-                    CardanoWasm.AssetName.new(hexToBytes(assetName)),
-                    CardanoWasm.BigNum.from_str(String(amount))
-                );
-            }
-            wmasset.insert(
-                CardanoWasm.ScriptHash.from_bytes(hexToBytes(policyId)),
-                wassets
-            );
-        }
-        result.set_multiasset(wmasset);
-    }
-    return bytesToHex(result.to_bytes());
-}
-
 export function reduceWasmMultiasset(multiasset, reducer, initValue) {
     let result = initValue;
     if (multiasset) {
@@ -156,14 +140,11 @@ export function convertAssetNameToHEX(name) {
 }
 
 export function getScriptHexFromAddress(address){
-    console.log(address)
     const keyHash = CardanoWasm.BaseAddress.from_address(
         CardanoWasm.Address.from_bech32(address)
     ).payment_cred().to_keyhash();
-    console.log(keyHash);
 
     const keyHashBech = keyHash.to_bech32(Bech32Prefix.PAYMENT_KEY_HASH);
-    console.log(keyHashBech)
 
     const scripts = CardanoWasm.NativeScripts.new();
     scripts.add(
@@ -182,6 +163,21 @@ export function getScriptHexFromAddress(address){
     );
     return bytesToHex(mintScript.to_bytes());
 }
+export function getNewScripts(){
+    return CardanoWasm.PlutusScripts.new();
+}
+export function getScriptFromCborHex(cborHex){
+    return CardanoWasm.PlutusScript.from_bytes_v2(hexToBytes(cborHex));
+}
+
+export function getScriptAddressFromScriptCborHex(cborHex){
+    const script =getScriptFromCborHex(cborHex);
+    const addr = CardanoWasm.EnterpriseAddress.new(
+        0, // 0 for Testnet - 1 for Mainnet
+        CardanoWasm.StakeCredential.from_scripthash(script.hash())
+    );
+    return addr.to_address().to_bech32('addr_test');
+}
 
 export function getTransactionHex(witnessSetHex, unsignedTransactionHex){
     const witnessSet = CardanoWasm.TransactionWitnessSet.from_bytes(
@@ -196,4 +192,51 @@ export function getTransactionHex(witnessSetHex, unsignedTransactionHex){
         tx.auxiliary_data(),
     );
     return bytesToHex(transaction.to_bytes())
+}
+
+export async function initTransactionBuilder(){
+    return CardanoWasm.TransactionBuilder.new(
+        CardanoWasm.TransactionBuilderConfigBuilder.new()
+            .fee_algo(CardanoWasm.LinearFee.new(CardanoWasm.BigNum.from_str(protocolParams.linearFee.minFeeA), CardanoWasm.BigNum.from_str(protocolParams.linearFee.minFeeB)))
+            .pool_deposit(CardanoWasm.BigNum.from_str(protocolParams.poolDeposit))
+            .key_deposit(CardanoWasm.BigNum.from_str(protocolParams.keyDeposit))
+            .coins_per_utxo_word(CardanoWasm.BigNum.from_str(protocolParams.coinsPerUtxoWord))
+            .max_value_size(protocolParams.maxValSize)
+            .max_tx_size(protocolParams.maxTxSize)
+            .prefer_pure_change(true)
+            .build()
+    )
+}
+
+export function appendTxBuilderWithOutput(txBuilder,address,adaValue){
+    const addr = CardanoWasm.Address.from_bech32(address)
+    // const addressCbor = addressToCbor(address);
+    txBuilder.add_output(
+        CardanoWasm.TransactionOutput.new(
+            addr,
+            CardanoWasm.Value.new(CardanoWasm.BigNum.from_str(adaValue))
+        ),
+    );
+    return txBuilder;
+}
+
+export function appendTxBuilderWithInput(txBuilder, utxos){
+    let txOutputs = CardanoWasm.TransactionUnspentOutputs.new()
+    for(const utxo of utxos){
+        txOutputs.add(utxo.transactionUnspentOutput)
+    }
+    txBuilder.add_inputs_from(txOutputs, 1)
+    return txBuilder;
+}
+
+export function appendTxBuilderWithChangeAddress(txBuilder, changeAddress){
+    txBuilder.add_change_if_needed(CardanoWasm.Address.from_bech32(changeAddress))
+    return txBuilder;
+}
+
+export function convertAdaAmountToLovelaceString(adaAmount){
+    const result = Number(adaAmount) * 1000000;
+    const str = result.toString();
+    console.log(str)
+    return str;
 }
