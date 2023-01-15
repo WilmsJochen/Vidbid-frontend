@@ -10,7 +10,7 @@ import {
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
 const supportedWallets = [
-    "yoroi"
+    "nami"
 ];
 
 class CardanoService {
@@ -19,16 +19,15 @@ class CardanoService {
     }
 
     async connectWallet(){
-        await this.getWalletApi(true);
+        await this.refreshWalletApi(true);
     }
 
     async isWalletConnected(){
-        const isConnected = await this.wallet.isEnabled();
-        this.isWalletConnected = isConnected;
-        if(isConnected){
-            await this.getWalletApi()
+        this.isWalletConnected  = await this.wallet.isEnabled();
+        if(this.isWalletConnected ){
+            await this.refreshWalletApi()
         }
-        return isConnected;
+        return this.isWalletConnected;
     }
 
     disconnectWallet(){
@@ -37,8 +36,10 @@ class CardanoService {
     }
 
     getFirstSupportedWallet(){
+
         for(const supportedWallet of supportedWallets){
             const cardano = window.cardano;
+            console.log(cardano)
             if(cardano[supportedWallet]){
                 console.log("Found available wallet, ",supportedWallet)
                 return cardano[supportedWallet]
@@ -46,31 +47,21 @@ class CardanoService {
         }
     }
 
-    async getWalletApi(canEnableWallet = false){
+    async refreshWalletApi(canEnableWallet = false){
         if(canEnableWallet || this.isWalletConnected){
             this.walletApi = await this.wallet.enable({ requestIdentification: true});
-            this.walletApi?.experimental?.setReturnType(walletReturnType);
-
-            this.walletAuth = this.walletApi?.experimental?.auth();
-            this.walletAuthEnabled = this.walletAuth?.isEnabled();
         }
     }
 
     async getWalletInfo(){
-        if(!this.walletAuthEnabled){
-            this.getWalletApi()
-        }
         return {
-            walletId: this.walletAuth.getWalletId(),
-            pubKey: this.walletAuth.getWalletPubkey(),
             changeAddress: await this.getChangeAddress(),
             balances: await this.getWalletBalances()
         }
     }
 
     async getWalletBalances () {
-        const tokenId = "*";
-        const balancesCBOR = await this.walletApi?.getBalance(tokenId);
+        const balancesCBOR = await this.walletApi?.getBalance();
         const value = CardanoWasm.Value.from_bytes(hexToBytes(balancesCBOR));
         const balances = { default: value.coin().to_str() };
         balances.assets = reduceWasmMultiasset(
@@ -110,20 +101,12 @@ class CardanoService {
         let utxosCbor = await this.walletApi?.getUtxos()
         let retries = 0
         while(retries < 3 && (!utxosCbor || utxosCbor.length === 0)){
-            console.log(utxosCbor)
-            console.log(retries)
             retries ++;
             utxosCbor = await this.walletApi?.getUtxos()
         }
         return mapCborUtxos(utxosCbor)
     }
 
-    async getRandomUtxo(){
-        const utxos = await this.getUtxos();
-        const utxo = utxos.filter(utxo => Number(utxo.amount) > 100000)[Math.floor(Math.random() * utxos.length)];
-        const outputHex = getOutputHexFromUtxo(utxo)
-        return {utxo, outputHex}
-    }
 
     async signTx(txBuilder){
         try{

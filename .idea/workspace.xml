@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Adding support for yoroi.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
@@ -52,19 +51,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "TF_FMT": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/desyco/projects/desyco/cardano/cardano-wallet-connector",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;TF_FMT&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/desyco/projects/desyco/cardano/cardano-wallet-connector&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/services" />
@@ -126,6 +125,7 @@
       <workItem from="1673291951992" duration="1917000" />
       <workItem from="1673340373038" duration="643000" />
       <workItem from="1673697029287" duration="10209000" />
+      <workItem from="1673779153959" duration="2687000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>

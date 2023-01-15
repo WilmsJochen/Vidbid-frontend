@@ -21,7 +21,8 @@ const scriptAddresses = {
 }
 
 const secondWallet = {
-    address: "addr_test1qzfje6pa0a5jfwfdd7ns4sskpkrmh03c04nxf0dgqqa8s7t0ar7j04mgg9s0g5v4nqcrzm0fspekjx6m4xqscxm9xawsydhj9m"
+    nami: "addr_test1qzfje6pa0a5jfwfdd7ns4sskpkrmh03c04nxf0dgqqa8s7t0ar7j04mgg9s0g5v4nqcrzm0fspekjx6m4xqscxm9xawsydhj9m",
+    yoroi: "addr_test1qz39gvxc9dquhs654fv9ckh0zrpm6y9nneq5zly38z7hvucz3f0w0tuz2tusdfgeqmhf45lkllpsulxunavvxtgpgyxqaxtn79"
 }
 
 export default class VidbidContractService {
@@ -30,9 +31,11 @@ export default class VidbidContractService {
     }
 
     async mintToken(adaAmount){
+        const lovelaceAmount = convertAdaAmountToLovelaceString(adaAmount);
         let txBuilder = await initTransactionBuilder();
-        txBuilder = appendTxBuilderWithOutput(txBuilder,secondWallet.address, convertAdaAmountToLovelaceString(adaAmount));
-        const utxos = await this.cardanoService.getUtxos();
+        txBuilder = appendTxBuilderWithOutput(txBuilder,secondWallet.yoroi, lovelaceAmount.toString());
+        let utxos = await this.cardanoService.getUtxos();
+        utxos = utxos.filter(utxo => Number(utxo.amount) > 99748981)
         console.log(utxos)
         txBuilder = appendTxBuilderWithInput(txBuilder, utxos)
         const changeAddress = await this.cardanoService.getChangeAddress();

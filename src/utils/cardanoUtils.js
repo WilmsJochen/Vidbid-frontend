@@ -235,8 +235,5 @@ export function appendTxBuilderWithChangeAddress(txBuilder, changeAddress){
 }
 
 export function convertAdaAmountToLovelaceString(adaAmount){
-    const result = Number(adaAmount) * 1000000;
-    const str = result.toString();
-    console.log(str)
-    return str;
+    return Number(adaAmount) * 1000000;
 }
