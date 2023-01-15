@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import VideoList from "../../common/video/VideoList";
 import {Header, Modal} from 'semantic-ui-react'
-import BackendService from "../../services/backendService";
+import BackendService from "../../services/ApiService";
 import RoadMapPage from "../RoadMap";
 import styled from "styled-components";
 

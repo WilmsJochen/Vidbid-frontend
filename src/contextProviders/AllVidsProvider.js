@@ -1,5 +1,5 @@
 import React,{ createContext, useState, useEffect} from 'react';
-import BackendService from "../services/backendService";
+import BackendService from "../services/ApiService";
 
 export const AllVidsContext = createContext();
 const backendService = new BackendService();

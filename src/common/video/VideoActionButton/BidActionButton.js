@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import VideoFrame  from "../VideoFrame";
 import {WalletContext} from "../../../contextProviders/WalletProvider";
 import VidbidContractService from "../../../services/vidbidContractService";
+import ApiService from "../../../services/ApiService";
 
 const ContentWrapper = styled.div`
   padding-bottom: 2%;

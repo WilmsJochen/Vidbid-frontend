@@ -24,6 +24,15 @@ export default class ApiService {
     //     }
     // }
 
+    async upload(unSignedTx, changeAddress){
+        const {data: apiResponse} = await this.api.post("/api/upload",{
+            unSignedTx,
+            userChangeAddress: changeAddress,
+            vidDetails: {}
+        })
+        return apiResponse.data;
+    }
+
     async getTop5Vids(){
         return  [
 

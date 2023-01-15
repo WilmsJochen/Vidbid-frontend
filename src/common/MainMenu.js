@@ -63,7 +63,6 @@ export default function MainMenu({ children }){
                                     <Dropdown.Item>ADA: {walletInfo?.balances?.default} </Dropdown.Item>
                                     {
                                         walletInfo?.balances?.assets && Object.keys(walletInfo?.balances?.assets).map(assetId => {
-                                            console.log(assetId)
                                             return <Dropdown.Item>{walletInfo?.balances?.assets[assetId].name}: {walletInfo?.balances?.assets[assetId].amount} </Dropdown.Item>
                                         })
                                     }

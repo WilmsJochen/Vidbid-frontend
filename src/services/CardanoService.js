@@ -1,11 +1,9 @@
 import {
     addressesFromCborIfNeeded,
-    getOutputHexFromUtxo,
-    getTransactionHex,
+    cost_model_vals,
     hexToBytes,
     mapCborUtxos,
-    reduceWasmMultiasset,
-    walletReturnType
+    reduceWasmMultiasset
 } from '../utils/cardanoUtils';
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
@@ -76,7 +74,14 @@ class CardanoService {
     }
 
     async getCollateral () {
-        return this.walletApi.getCollateral();
+        let collateral = [];
+        if (this.wallet.name === "Nami") {
+            collateral = await this.walletApi.experimental.getCollateral();
+        } else {
+            collateral = await this.walletApi.getCollateral();
+        }
+        console.log(collateral)
+        return mapCborUtxos(collateral);
     }
 
     async getChangeAddress(){
@@ -107,22 +112,85 @@ class CardanoService {
         return mapCborUtxos(utxosCbor)
     }
 
-
-    async signTx(txBuilder){
-        try{
+    async createUnsignedTx(txBuilder, scriptObject, requiredSigners){
+        try {
             const txBody = txBuilder.build();
+
+
             // Tx witness
             const transactionWitnessSet = CardanoWasm.TransactionWitnessSet.new();
-            const unsignedTx = CardanoWasm.Transaction.new(
-                txBody,
-                CardanoWasm.TransactionWitnessSet.from_bytes(transactionWitnessSet.to_bytes())
-            )
-            let txVkeyWitnesses = await this.walletApi.signTx(Buffer.from(unsignedTx.to_bytes(), "utf8").toString("hex"), true);
-            txVkeyWitnesses = CardanoWasm.TransactionWitnessSet.from_bytes(Buffer.from(txVkeyWitnesses, "hex"));
-            transactionWitnessSet.set_vkeys(txVkeyWitnesses.vkeys());
+            if (scriptObject) {
+                //add script
+                const scripts = CardanoWasm.PlutusScripts.new();
+                scripts.add(CardanoWasm.PlutusScript.from_bytes(Buffer.from(scriptObject.cborHex, "hex"))); //from cbor of plutus script
+                transactionWitnessSet.set_plutus_scripts(scripts)
+
+                // Tx witness
+                transactionWitnessSet.set_plutus_scripts(scripts)
+                transactionWitnessSet.set_plutus_data(scriptObject.datums)
+                transactionWitnessSet.set_redeemers(scriptObject.redeemers)
+
+                //Set script data hash
+                const costModel = CardanoWasm.CostModel.new();
+                cost_model_vals.forEach((x, i) => costModel.set(i, CardanoWasm.Int.new_i32(x)));
+                const costModels = CardanoWasm.Costmdls.new();
+                costModels.insert(CardanoWasm.Language.new_plutus_v1(), costModel);
+                const scriptDataHash = CardanoWasm.hash_script_data(scriptObject.redeemers, costModels, scriptObject.datums);
+                txBody.set_script_data_hash(scriptDataHash);
+
+                // set collateral
+                const collaterals = await this.getCollateral();
+                const inputs = CardanoWasm.TransactionInputs.new();
+                collaterals.filter(collateral => collateral.amount > 148981).forEach((collateral) => {
+                    console.log(collateral)
+                    inputs.add(collateral.transactionUnspentOutput.input());
+                });
+                txBody.set_collateral(inputs)
+            }
+
+
+            if (requiredSigners) {
+                const requiredSignersKeyHashes = CardanoWasm.Ed25519KeyHashes.new();
+
+                for (const requiredSigner of requiredSigners) {
+                    const addr = CardanoWasm.Address.from_bech32(requiredSigner);
+                    const baseAddress = CardanoWasm.BaseAddress.from_address(addr)
+                    requiredSignersKeyHashes.add(baseAddress.payment_cred().to_keyhash())
+                }
+
+                txBody.set_required_signers(requiredSignersKeyHashes);
+            }
 
             return CardanoWasm.Transaction.new(
-                unsignedTx.body(),
+                txBody,
+                CardanoWasm.TransactionWitnessSet.from_bytes(transactionWitnessSet.to_bytes())
+            ).to_hex()
+        }catch(e){
+            console.log("couldn't create tx")
+            console.error(e);
+            throw e;
+        }
+    }
+
+
+    async signTx(rawTx){
+        try{
+            const unSignedTx = CardanoWasm.Transaction.from_bytes(Buffer.from(rawTx, 'hex'));
+            const transactionWitnessSet = unSignedTx.witness_set();
+
+            const vkeyWitnesses = transactionWitnessSet.vkeys() || CardanoWasm.Vkeywitnesses.new();
+            console.log(vkeyWitnesses.to_json())
+            const txVkeyWitnessesCbor = await this.walletApi.signTx(Buffer.from(unSignedTx.to_bytes(), "utf8").toString("hex"), true);
+            console.log("signed")
+            const txVkeyWitnesses = CardanoWasm.TransactionWitnessSet.from_bytes(Buffer.from(txVkeyWitnessesCbor, "hex"));
+            console.log("converted")
+            vkeyWitnesses.add(txVkeyWitnesses.vkeys());
+            console.log(vkeyWitnesses.to_json())
+
+            transactionWitnessSet.set_vkeys(vkeyWitnesses);
+
+            return CardanoWasm.Transaction.new(
+                unSignedTx.body(),
                 transactionWitnessSet
             );
 
