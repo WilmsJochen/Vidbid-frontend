@@ -6,7 +6,7 @@ import {
     appendTxBuilderWithFee,
     convertAdaAmountToLovelaceString,
     generatePlutusDatumFromJson,
-    appendTxBuilderWithScriptOutput, appendTxBuilderWithScriptInput, generateRedeemers,
+    appendTxBuilderWithScriptOutput, appendTxBuilderWithScriptInput, generateRedeemers, appendTxBuilderWithCollateral,
 } from '../utils/cardanoUtils';
 import ApiService from "./ApiService";
 
@@ -126,9 +126,12 @@ export default class VidbidContractService {
         let utxos = await this.cardanoService.getUtxos();
         utxos = utxos.filter(utxo => Number(utxo.amount) > 99748981)
         txBuilder = appendTxBuilderWithAdaInput(txBuilder, utxos)
-        const changeAddress = await this.cardanoService.getChangeAddress();
+
+        console.log("input")
         //fees
-        txBuilder = appendTxBuilderWithFee(txBuilder, {changeAddress})
+        const changeAddress = await this.cardanoService.getChangeAddress();
+        txBuilder = appendTxBuilderWithFee(txBuilder, changeAddress)
+        console.log("fees")
 
         const unSignedTx = await this.cardanoService.createUnsignedTx(txBuilder)
 
@@ -140,34 +143,34 @@ export default class VidbidContractService {
     }
 
     async grab(number){
-        console.log("grab", number)
+        const scriptAddress = await getScriptAddressFromScriptCborHex(scriptAddresses.guessGame.cborHex);
+        const scriptTransactions = await this.apiService.getTx(scriptAddress);
         let txBuilder = await initTransactionBuilder();
-        //output
-        const changeAddress = await this.cardanoService.getChangeAddress();
-        const lovelaceAmount = convertAdaAmountToLovelaceString(adaAmount);
-        txBuilder = appendTxBuilderWithAdaOutput(txBuilder, changeAddress, Number(lovelaceAmount - manualFee))
 
+        const plutusData = await generatePlutusDatumFromJson(number);
+        const redeemer = await generateRedeemers(number);
         //input
-        const scriptAddress = getScriptAddressFromScriptCborHex(scriptAddresses.guessGame.cborHex);
-        txBuilder = appendTxBuilderWithScriptInput(txBuilder, scriptAddress, "1eacf49c3104d6d59a73074f18518e988e2d17f75de92480da5b124f5b336606");
-        console.log("add input")
+        txBuilder = appendTxBuilderWithScriptInput(txBuilder, scriptAddresses.guessGame.cborHex,scriptTransactions, plutusData, redeemer);
+
+        // set collateral
+        const collaterals = await this.cardanoService.getCollateral();
+        txBuilder = appendTxBuilderWithCollateral(txBuilder, collaterals)
+
         //fees
-        txBuilder = appendTxBuilderWithFee(txBuilder, {manualFee})
-        console.log("add fee")
+        const changeAddress = await this.cardanoService.getChangeAddress();
+        txBuilder = appendTxBuilderWithFee(txBuilder, changeAddress,true)
 
-        const scriptObject ={
-            cborHex: scriptAddresses.alwaysTrue.cborHex,
-            datums: generatePlutusDatumFromJson(42),
-            redeemers: generateRedeemers(42)
-        }
-
-        const unSignedTx = await this.cardanoService.createUnsignedTx(txBuilder, scriptObject)
-        // tmp disable for tryouts.
-        // const apiRes = await this.apiService.upload(unSignedTx,changeAddress)
-        // console.log(apiRes)
+        const unSignedTx = await this.cardanoService.createUnsignedTx(txBuilder)
+        console.log(unSignedTx)
         const signedTx = await this.cardanoService.signTx(unSignedTx)
         console.log("Tx signed", signedTx)
         const txId = await this.cardanoService.submitTx(signedTx)
         console.log(txId)
     }
 }
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"decfd3f9b11355f5800d221846ddd37320cad2a41a6c4f009ac673e271b52c68\")) SNothing))])"
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"d67fd6f640c2bf724f3e2ffcfea17c4752d2e6face6ec9464e8190ead9ed220b\")) SNothing))])"
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"decfd3f9b11355f5800d221846ddd37320cad2a41a6c4f009ac673e271b52c68\")) SNothing))])"
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"d67fd6f640c2bf724f3e2ffcfea17c4752d2e6face6ec9464e8190ead9ed220b\")) SNothing))])"
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"decfd3f9b11355f5800d221846ddd37320cad2a41a6c4f009ac673e271b52c68\")) SNothing))])"
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"604399d494a6b660329ea65d87f027e5bbf8710cf6bbc1e244c76f841279c4f9\")) SNothing))])"

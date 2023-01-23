@@ -23,6 +23,10 @@ export default class ApiService {
     //         handleError(error);
     //     }
     // }
+    async getTx(scriptAddress){
+        const {data: apiResponse} = await this.api.get(`/api/tx/${scriptAddress}`)
+        return apiResponse.data;
+    }
 
     async upload(unSignedTx, changeAddress){
         const {data: apiResponse} = await this.api.post("/api/upload",{

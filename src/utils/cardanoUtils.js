@@ -65,15 +65,15 @@ export function addressesFromCborIfNeeded(addresses) {
 
 export function mapCborUtxos(cborUtxos) {
     return cborUtxos.map((hex) => {
-        const u = CardanoWasm.TransactionUnspentOutput.from_bytes(hexToBytes(hex));
-        const input = u.input();
-        const output = u.output();
+        const utxo = CardanoWasm.TransactionUnspentOutput.from_bytes(hexToBytes(hex));
+        const input = utxo.input();
+        const output = utxo.output();
         const txHash = bytesToHex(input.transaction_id().to_bytes());
         const txIndex = input.index();
         const value = output.amount();
         return {
             utxo_id: `${txHash}${txIndex}`,
-            transactionUnspentOutput: u,
+            utxo,
             input,
             tx_hash: txHash,
             tx_index: txIndex,
@@ -138,6 +138,10 @@ export async function initTransactionBuilder(){
             .coins_per_utxo_word(CardanoWasm.BigNum.from_str(protocolParams.coinsPerUtxoWord))
             .max_value_size(protocolParams.maxValSize)
             .max_tx_size(protocolParams.maxTxSize)
+            .ex_unit_prices(CardanoWasm.ExUnitPrices.new(
+                CardanoWasm.UnitInterval.new(CardanoWasm.BigNum.from_str("577"), CardanoWasm.BigNum.from_str("10000")),
+                CardanoWasm.UnitInterval.new(CardanoWasm.BigNum.from_str("721"), CardanoWasm.BigNum.from_str("10000000"))
+            ))
             .prefer_pure_change(true)
             .build()
     )
@@ -173,31 +177,69 @@ export function appendTxBuilderWithScriptOutput(txBuilder, ScriptAddressBech32, 
 export function appendTxBuilderWithAdaInput(txBuilder, utxos){
     let txOutputs = CardanoWasm.TransactionUnspentOutputs.new()
     for(const utxo of utxos){
-        txOutputs.add(utxo.transactionUnspentOutput)
+        txOutputs.add(utxo.utxo)
     }
     txBuilder.add_inputs_from(txOutputs, 1)
     return txBuilder;
 }
 
-export function appendTxBuilderWithScriptInput(txBuilder, scriptAddressBech32, transactionID){
-    const scriptAddress = CardanoWasm.Address.from_bech32(scriptAddressBech32);
-    txBuilder.add_input(
-        scriptAddress,
-        CardanoWasm.TransactionInput.new(
-            CardanoWasm.TransactionHash.from_bytes(Buffer.from(transactionID, "hex")),
-            transactionID),
-        CardanoWasm.Value.new(CardanoWasm.BigNum.from_str("2"))) // how much lovelace is at that UTXO
+export function appendTxBuilderWithScriptInput(txBuilder, scriptCbor, scriptTransactions, datum, redeemer){
+    const plutusScript = CardanoWasm.PlutusScript.from_bytes(hexToBytes(scriptCbor));
+    const wasmPlutusWitness = CardanoWasm.PlutusWitness.new(plutusScript, datum, redeemer);
+    const txInputsBuilder = CardanoWasm.TxInputsBuilder.new()
+
+    for(const tx of scriptTransactions){
+        const txHash = CardanoWasm.TransactionHash.from_bytes(hexToBytes(tx.tx_hash));
+        const wasmTransactionInput = CardanoWasm.TransactionInput.new(txHash)
+        const assets = tx.amount
+        let lovelaceAmount = 0;
+        const wasmMultiasset = CardanoWasm.MultiAsset.new()
+        for (const asset of assets) {
+            if(asset.unit === 'lovelace'){
+                lovelaceAmount += Number(asset.quantity);
+                continue;
+            }
+
+            const wasmAssets = CardanoWasm.Assets.new()
+            wasmAssets.insert(CardanoWasm.AssetName.new(hexToBytes(asset.unit)), CardanoWasm.BigNum.from_str(asset.quantity))
+            const wasmScriptHash = CardanoWasm.ScriptHash.from_bytes(hexToBytes(asset.unit))
+            wasmMultiasset.insert(wasmScriptHash, wasmAssets)
+        }
+        const wasmValue = CardanoWasm.Value.new_from_assets(wasmMultiasset)
+        wasmValue.set_coin(CardanoWasm.BigNum.from_str(lovelaceAmount.toString()))
+
+        txInputsBuilder.add_plutus_script_input(wasmPlutusWitness, wasmTransactionInput, wasmValue)
+        continue;
+    }
+
+    txBuilder.set_inputs(txInputsBuilder);
+
+    // add cost model
+    txBuilder.calc_script_data_hash(CardanoWasm.TxBuilderConstants.plutus_default_cost_models())
+
     return txBuilder;
 }
 
 
-export function appendTxBuilderWithFee(txBuilder, {changeAddress, manualFee}){
-    if(changeAddress){
-        txBuilder.add_change_if_needed(CardanoWasm.Address.from_bech32(changeAddress))
+export function appendTxBuilderWithCollateral(txBuilder, collaterals){
+    // handle collateral inputs
+    const collateralTxInputsBuilder = CardanoWasm.TxInputsBuilder.new()
+    for (const collateral of collaterals) {
+        const wasmUtxo = collateral.utxo;
+        collateralTxInputsBuilder.add_input(wasmUtxo.output().address(), wasmUtxo.input(), wasmUtxo.output().amount())
     }
-    if(manualFee){
-        txBuilder.set_fee(CardanoWasm.BigNum.from_str(Number(manualFee).toString()))
+    txBuilder.set_collateral(collateralTxInputsBuilder)
+    return txBuilder;
+}
+
+export function appendTxBuilderWithFee(txBuilder, changeAddress, scriptInput=false){
+    txBuilder.add_change_if_needed(CardanoWasm.Address.from_bech32(changeAddress))
+    if(scriptInput){
+        const baseAddress = CardanoWasm.BaseAddress.from_address(CardanoWasm.Address.from_bech32(changeAddress));
+        txBuilder.add_required_signer(baseAddress.payment_cred().to_keyhash())
+        txBuilder.calc_script_data_hash(CardanoWasm.TxBuilderConstants.plutus_default_cost_models())
     }
+
     return txBuilder;
 }
 
@@ -210,24 +252,13 @@ export function generatePlutusDatumFromJson(number){
 }
 
 export function generateRedeemers(number){ //todo
-    const redeemers = CardanoWasm.Redeemers.new();
-
-    const data = CardanoWasm.PlutusData.new_constr_plutus_data(
-        CardanoWasm.ConstrPlutusData.new(
-            CardanoWasm.BigNum.from_str("0"),
-            CardanoWasm.PlutusList.new()
-        )
-    );
-
-    const redeemer = CardanoWasm.Redeemer.new(
+    return CardanoWasm.Redeemer.new(
         CardanoWasm.RedeemerTag.new_spend(),
-        CardanoWasm.BigNum.from_str("0"),
-        data,
+        CardanoWasm.BigNum.zero(),
+        CardanoWasm.PlutusData.new_integer(CardanoWasm.BigInt.from_str(number)),
         CardanoWasm.ExUnits.new(
-            CardanoWasm.BigNum.from_str("7000000"),
-            CardanoWasm.BigNum.from_str("3000000000")
-        )
-    );
-    redeemers.add(redeemer)
-    return redeemers
+            CardanoWasm.BigNum.from_str('8000'),
+            CardanoWasm.BigNum.from_str('9764680'),
+        ),
+    )
 }
