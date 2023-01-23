@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Button, Form, Grid, Header, Icon, Modal} from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import VideoFrame  from "../VideoFrame";
+import VidbidContractService from "../../../services/vidbidContractService";
+import {WalletContext} from "../../../contextProviders/WalletProvider";
 
 const ContentWrapper = styled.div`
   padding-bottom: 2%;
@@ -15,7 +17,8 @@ const ButtonContentWrapper = styled.div`
 export default function GrabActionButton({video}){
     const [open, setOpen] = useState(false)
     const [formState, setFormState] = useState({minPrice: 0, agreeConditions: false})
-
+    const {cardanoService} = useContext(WalletContext)
+    const vidbidContractService = new VidbidContractService(cardanoService)
     const handleChange = (e, { name, value }) => {
         const newState = {
             ...formState,
@@ -24,7 +27,8 @@ export default function GrabActionButton({video}){
         setFormState(newState);
     }
 
-    const handleSubmit = () =>{
+    const handleSubmit = async () =>{
+        await vidbidContractService.grab(formState.bidPrice);
         setOpen(false)
     }
     //TODO: investigate use of formik.
@@ -53,6 +57,10 @@ export default function GrabActionButton({video}){
                                     Minimal Price: {video.adaPrice} ₳
                                 </ContentWrapper>
                                 <ContentWrapper>
+                                    <Form.Field>
+                                        <label>Minimal price</label>
+                                        <Form.Input name="bidPrice" value={formState.bidPrice} onChange={handleChange} placeholder='Bid amount' />
+                                    </Form.Field>
                                     <Form.Field>
                                         <Form.Checkbox name="agreeConditions" value={formState.agreeConditions} onChange={handleChange} label='I agree to the Terms and Conditions' />
                                     </Form.Field>

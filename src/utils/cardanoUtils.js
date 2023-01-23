@@ -205,10 +205,8 @@ export function convertAdaAmountToLovelaceString(adaAmount){
     return Number(adaAmount) * 1000000;
 }
 
-export function generatePlutusDatumFromJson(number){ //todo
-    let datums = CardanoWasm.PlutusList.new();
-    datums.add(CardanoWasm.PlutusData.new_integer(CardanoWasm.BigInt.from_str(number.toString())));
-    return datums
+export function generatePlutusDatumFromJson(number){
+    return CardanoWasm.PlutusData.new_integer(CardanoWasm.BigInt.from_str(number.toString()))
 }
 
 export function generateRedeemers(number){ //todo

@@ -175,23 +175,23 @@ class CardanoService {
 
     async signTx(rawTx){
         try{
+            console.log(rawTx)
             const unSignedTx = CardanoWasm.Transaction.from_bytes(Buffer.from(rawTx, 'hex'));
             const transactionWitnessSet = unSignedTx.witness_set();
-
+            console.log(transactionWitnessSet)
             const vkeyWitnesses = transactionWitnessSet.vkeys() || CardanoWasm.Vkeywitnesses.new();
             console.log(vkeyWitnesses.to_json())
             const txVkeyWitnessesCbor = await this.walletApi.signTx(Buffer.from(unSignedTx.to_bytes(), "utf8").toString("hex"), true);
             console.log("signed")
             const txVkeyWitnesses = CardanoWasm.TransactionWitnessSet.from_bytes(Buffer.from(txVkeyWitnessesCbor, "hex"));
-            console.log("converted")
-            vkeyWitnesses.add(txVkeyWitnesses.vkeys());
-            console.log(vkeyWitnesses.to_json())
 
-            transactionWitnessSet.set_vkeys(vkeyWitnesses);
+            //todo investigate multi signature witnesses.
+            // vkeyWitnesses.add(txVkeyWitnesses.vkeys());
+            // transactionWitnessSet.set_vkeys(vkeyWitnesses);
 
             return CardanoWasm.Transaction.new(
                 unSignedTx.body(),
-                transactionWitnessSet
+                txVkeyWitnesses
             );
 
         }catch(e){

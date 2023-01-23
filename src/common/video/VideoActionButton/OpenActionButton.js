@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Button, Form, Grid, Header, Icon, Modal} from 'semantic-ui-react'
 import styled from 'styled-components'
 
 import VideoFrame  from "../VideoFrame";
+import {WalletContext} from "../../../contextProviders/WalletProvider";
+import VidbidContractService from "../../../services/vidbidContractService";
 
 const ContentWrapper = styled.div`
   padding-bottom: 2%;
@@ -15,6 +17,8 @@ const ButtonContentWrapper = styled.div`
 export default function OpenActionButton({video}){
     const [open, setOpen] = useState(false)
     const [formState, setFormState] = useState({minPrice: 0, agreeConditions: false})
+    const {cardanoService} = useContext(WalletContext)
+    const vidbidContractService = new VidbidContractService(cardanoService)
 
     const handleChange = (e, { name, value }) => {
         const newState = {
@@ -24,7 +28,8 @@ export default function OpenActionButton({video}){
         setFormState(newState);
     }
 
-    const handleSubmit = () =>{
+    const handleSubmit = async () =>{
+        await vidbidContractService.open(formState.bidPrice)
         setOpen(false)
     }
     //TODO: investigate use of formik.

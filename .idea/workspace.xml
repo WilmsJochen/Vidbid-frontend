@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Work with nami wallet, which is more stable.">
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="TMP commit where transacion should be signed by backend and frontend wallet.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/AllVidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/AllVidsProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/OwnedVidsProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contextProviders/Top5VidsProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/Top5VidsProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoFrame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ApiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ApiService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/backendService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ApiService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
     </list>
@@ -62,7 +59,7 @@
   "keyToString": {
     "TF_FMT": "false",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/desyco/projects/desyco/vidbid/Vidbid-orchestrator",
+    "last_opened_file_path": "/home/desyco/projects/desyco/vidbid/Vidbid-frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,7 +129,10 @@
       <workItem from="1673291951992" duration="1917000" />
       <workItem from="1673340373038" duration="643000" />
       <workItem from="1673697029287" duration="10209000" />
-      <workItem from="1673779153959" duration="19851000" />
+      <workItem from="1673779153959" duration="20583000" />
+      <workItem from="1674409801625" duration="1175000" />
+      <workItem from="1674466442065" duration="613000" />
+      <workItem from="1674496962138" duration="2542000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -351,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673781916327</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="TMP commit where transacion should be signed by backend and frontend wallet.">
+      <created>1673803346540</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1673803346540</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +397,8 @@
     <MESSAGE value="disable deploy." />
     <MESSAGE value="Adding support for yoroi." />
     <MESSAGE value="Work with nami wallet, which is more stable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Work with nami wallet, which is more stable." />
+    <MESSAGE value="TMP commit where transacion should be signed by backend and frontend wallet." />
+    <option name="LAST_COMMIT_MESSAGE" value="TMP commit where transacion should be signed by backend and frontend wallet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
