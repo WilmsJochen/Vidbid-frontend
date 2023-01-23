@@ -141,6 +141,33 @@ export default class VidbidContractService {
 
     async grab(number){
         console.log("grab", number)
+        let txBuilder = await initTransactionBuilder();
+        //output
+        const changeAddress = await this.cardanoService.getChangeAddress();
+        const lovelaceAmount = convertAdaAmountToLovelaceString(adaAmount);
+        txBuilder = appendTxBuilderWithAdaOutput(txBuilder, changeAddress, Number(lovelaceAmount - manualFee))
 
+        //input
+        const scriptAddress = getScriptAddressFromScriptCborHex(scriptAddresses.guessGame.cborHex);
+        txBuilder = appendTxBuilderWithScriptInput(txBuilder, scriptAddress, "1eacf49c3104d6d59a73074f18518e988e2d17f75de92480da5b124f5b336606");
+        console.log("add input")
+        //fees
+        txBuilder = appendTxBuilderWithFee(txBuilder, {manualFee})
+        console.log("add fee")
+
+        const scriptObject ={
+            cborHex: scriptAddresses.alwaysTrue.cborHex,
+            datums: generatePlutusDatumFromJson(42),
+            redeemers: generateRedeemers(42)
+        }
+
+        const unSignedTx = await this.cardanoService.createUnsignedTx(txBuilder, scriptObject)
+        // tmp disable for tryouts.
+        // const apiRes = await this.apiService.upload(unSignedTx,changeAddress)
+        // console.log(apiRes)
+        const signedTx = await this.cardanoService.signTx(unSignedTx)
+        console.log("Tx signed", signedTx)
+        const txId = await this.cardanoService.submitTx(signedTx)
+        console.log(txId)
     }
 }

@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="TMP commit where transacion should be signed by backend and frontend wallet.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/GrabActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/OpenActionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/video/VideoFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoFrame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ApiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ApiService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
+    <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Open command on guess script with datum 42.">
       <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +125,7 @@
       <workItem from="1673779153959" duration="20583000" />
       <workItem from="1674409801625" duration="1175000" />
       <workItem from="1674466442065" duration="613000" />
-      <workItem from="1674496962138" duration="2542000" />
+      <workItem from="1674496962138" duration="2597000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -358,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673803346540</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Open command on guess script with datum 42.">
+      <created>1674499543131</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1674499543131</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +398,8 @@
     <MESSAGE value="Adding support for yoroi." />
     <MESSAGE value="Work with nami wallet, which is more stable." />
     <MESSAGE value="TMP commit where transacion should be signed by backend and frontend wallet." />
-    <option name="LAST_COMMIT_MESSAGE" value="TMP commit where transacion should be signed by backend and frontend wallet." />
+    <MESSAGE value="Open command on guess script with datum 42." />
+    <option name="LAST_COMMIT_MESSAGE" value="Open command on guess script with datum 42." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
