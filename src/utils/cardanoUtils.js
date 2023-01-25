@@ -24,20 +24,6 @@ const protocolParams = {
     coinsPerUtxoWord: "34482",
 }
 
-export const cost_model_vals = [
-    205665, 812, 1, 1, 1000, 571, 0, 1, 1000, 24177, 4, 1, 1000, 32, 117366,
-    10475, 4, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000,
-    100, 100, 100, 23000, 100, 19537, 32, 175354, 32, 46417, 4, 221973, 511, 0, 1,
-    89141, 32, 497525, 14068, 4, 2, 196500, 453240, 220, 0, 1, 1, 1000, 28662, 4,
-    2, 245000, 216773, 62, 1, 1060367, 12586, 1, 208512, 421, 1, 187000, 1000,
-    52998, 1, 80436, 32, 43249, 32, 1000, 32, 80556, 1, 57667, 4, 1000, 10,
-    197145, 156, 1, 197145, 156, 1, 204924, 473, 1, 208896, 511, 1, 52467, 32,
-    64832, 32, 65493, 32, 22558, 32, 16563, 32, 76511, 32, 196500, 453240, 220, 0,
-    1, 1, 69522, 11687, 0, 1, 60091, 32, 196500, 453240, 220, 0, 1, 1, 196500,
-    453240, 220, 0, 1, 1, 806990, 30482, 4, 1927926, 82523, 4, 265318, 0, 4, 0,
-    85931, 32, 205665, 812, 1, 1, 41182, 32, 212342, 32, 31220, 32, 32696, 32,
-    43357, 32, 32247, 32, 38314, 32, 9462713, 1021, 10,
-];
 
 export function isCBOR() {
     return walletReturnType === "cbor";
@@ -184,13 +170,26 @@ export function appendTxBuilderWithAdaInput(txBuilder, utxos){
 }
 
 export function appendTxBuilderWithScriptInput(txBuilder, scriptCbor, scriptTransactions, datum, redeemer){
-    const plutusScript = CardanoWasm.PlutusScript.from_bytes(hexToBytes(scriptCbor));
+    const plutusScript = getScriptFromCborHex(scriptCbor);
+
+    const datumHash = CardanoWasm.hash_plutus_data(datum)
+
     const wasmPlutusWitness = CardanoWasm.PlutusWitness.new(plutusScript, datum, redeemer);
+
     const txInputsBuilder = CardanoWasm.TxInputsBuilder.new()
 
     for(const tx of scriptTransactions){
+        if(tx.data_hash !== datumHash.to_hex()){
+            console.log("tx not used", tx.tx_hash)
+            continue;
+        }
+
         const txHash = CardanoWasm.TransactionHash.from_bytes(hexToBytes(tx.tx_hash));
-        const wasmTransactionInput = CardanoWasm.TransactionInput.new(txHash)
+        const txIn = CardanoWasm.TransactionInput.new(txHash,tx.tx_index)
+
+        // inline datum Witness
+        // const wasmPlutusWitness = CardanoWasm.PlutusWitness.new_with_ref(CardanoWasm.PlutusScriptSource.new(plutusScript), CardanoWasm.DatumSource.new_ref_input(txIn), redeemer);
+
         const assets = tx.amount
         let lovelaceAmount = 0;
         const wasmMultiasset = CardanoWasm.MultiAsset.new()
@@ -208,14 +207,10 @@ export function appendTxBuilderWithScriptInput(txBuilder, scriptCbor, scriptTran
         const wasmValue = CardanoWasm.Value.new_from_assets(wasmMultiasset)
         wasmValue.set_coin(CardanoWasm.BigNum.from_str(lovelaceAmount.toString()))
 
-        txInputsBuilder.add_plutus_script_input(wasmPlutusWitness, wasmTransactionInput, wasmValue)
-        continue;
+        txInputsBuilder.add_plutus_script_input(wasmPlutusWitness, txIn, wasmValue)
     }
 
     txBuilder.set_inputs(txInputsBuilder);
-
-    // add cost model
-    txBuilder.calc_script_data_hash(CardanoWasm.TxBuilderConstants.plutus_default_cost_models())
 
     return txBuilder;
 }
@@ -237,9 +232,8 @@ export function appendTxBuilderWithFee(txBuilder, changeAddress, scriptInput=fal
     if(scriptInput){
         const baseAddress = CardanoWasm.BaseAddress.from_address(CardanoWasm.Address.from_bech32(changeAddress));
         txBuilder.add_required_signer(baseAddress.payment_cred().to_keyhash())
-        txBuilder.calc_script_data_hash(CardanoWasm.TxBuilderConstants.plutus_default_cost_models())
+        txBuilder.calc_script_data_hash(CardanoWasm.TxBuilderConstants.plutus_vasil_cost_models())
     }
-
     return txBuilder;
 }
 
