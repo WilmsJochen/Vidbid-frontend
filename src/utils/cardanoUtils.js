@@ -1,27 +1,22 @@
-// @flow
 import {Buffer} from "buffer";
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
 
 export const walletReturnType = "cbor";
 
-const Bech32Prefix = {
-    ADDRESS: "addr",
-    PAYMENT_KEY_HASH: "addr_vkh"
-};
 
 const protocolParams = {
     linearFee: {
         minFeeA: "44",
-        minFeeB: "155381",
+            minFeeB: "155381",
     },
-    minUtxo: "34482",
-    poolDeposit: "500000000",
+    minUtxo: "4310",
+        poolDeposit: "500000000",
     keyDeposit: "2000000",
     maxValSize: 5000,
     maxTxSize: 16384,
     priceMem: 0.0577,
     priceStep: 0.0000721,
-    coinsPerUtxoWord: "34482",
+    coinsPerUtxoWord: "4310",
 }
 
 
@@ -218,10 +213,12 @@ export function appendTxBuilderWithScriptInput(txBuilder, scriptCbor, scriptTran
 
 export function appendTxBuilderWithCollateral(txBuilder, collaterals){
     // handle collateral inputs
+    console.log(collaterals)
     const collateralTxInputsBuilder = CardanoWasm.TxInputsBuilder.new()
     for (const collateral of collaterals) {
         const wasmUtxo = collateral.utxo;
         collateralTxInputsBuilder.add_input(wasmUtxo.output().address(), wasmUtxo.input(), wasmUtxo.output().amount())
+        break;
     }
     txBuilder.set_collateral(collateralTxInputsBuilder)
     return txBuilder;
@@ -249,10 +246,11 @@ export function generateRedeemers(number){ //todo
     return CardanoWasm.Redeemer.new(
         CardanoWasm.RedeemerTag.new_spend(),
         CardanoWasm.BigNum.zero(),
-        CardanoWasm.PlutusData.new_integer(CardanoWasm.BigInt.from_str(number)),
+        CardanoWasm.PlutusData.new_integer(CardanoWasm.BigInt.from_str(number.toString())),
         CardanoWasm.ExUnits.new(
             CardanoWasm.BigNum.from_str('8000'),
             CardanoWasm.BigNum.from_str('9764680'),
         ),
     )
 }
+

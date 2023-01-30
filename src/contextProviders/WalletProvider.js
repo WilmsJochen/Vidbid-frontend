@@ -1,13 +1,9 @@
 import React,{ createContext, useState, useEffect} from 'react';
-import { getWalletBalances, walletReturnType, getChangeAddress } from '../utils/cardanoUtils';
 
 import cardanoService from '../services/CardanoService';
 
 export const WalletContext = createContext();
 
-const supportedWallets = [
-    "yoroi"
-]
 
 export function WalletProvider({children}) {
 

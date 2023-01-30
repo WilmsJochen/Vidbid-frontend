@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9beff777-d6d6-427d-866f-e7c09b2600a5" name="Changes" comment="Issue with grabbing because of redeemer mismatch.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contextProviders/WalletProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ApiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ApiService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/CardanoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CardanoService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/vidbidContractService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/vidbidContractService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/cardanoUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cardanoUtils.js" afterDir="false" />
     </list>
@@ -56,7 +61,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TF_FMT": "false",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/desyco/projects/desyco/vidbid/Vidbid-orchestrator",
+    "javascript.nodejs.core.library.configured.version": "19.5.0",
+    "javascript.nodejs.core.library.typings.version": "18.11.18",
+    "last_opened_file_path": "/Users/desyco/projects/desyco/vidbid/Vidbid-frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -132,6 +139,7 @@
       <workItem from="1674496962138" duration="13594000" />
       <workItem from="1674548644908" duration="640000" />
       <workItem from="1674678658766" duration="5499000" />
+      <workItem from="1675106653333" duration="8933000" />
     </task>
     <task id="LOCAL-00001" summary="tmp commit.">
       <created>1638708449793</created>
@@ -421,5 +429,16 @@
     <MESSAGE value="Open command on guess script with datum 42." />
     <MESSAGE value="Issue with grabbing because of redeemer mismatch." />
     <option name="LAST_COMMIT_MESSAGE" value="Issue with grabbing because of redeemer mismatch." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/common/video/VideoActionButton/BidActionButton.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

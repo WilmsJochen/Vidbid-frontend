@@ -1,11 +1,11 @@
 import {
     addressesFromCborIfNeeded,
-    cost_model_vals,
     hexToBytes,
     mapCborUtxos,
     reduceWasmMultiasset
 } from '../utils/cardanoUtils';
 import * as CardanoWasm from "@emurgo/cardano-serialization-lib-asmjs";
+import {Buffer} from "buffer";
 
 const supportedWallets = [
     "nami"
@@ -37,7 +37,6 @@ class CardanoService {
 
         for(const supportedWallet of supportedWallets){
             const cardano = window.cardano;
-            console.log(cardano)
             if(cardano[supportedWallet]){
                 console.log("Found available wallet, ",supportedWallet)
                 return cardano[supportedWallet]

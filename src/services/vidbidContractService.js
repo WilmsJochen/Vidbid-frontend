@@ -166,13 +166,14 @@ export default class VidbidContractService {
         console.log("fee")
 
         const unSignedTx = await this.cardanoService.createUnsignedTx(txBuilder)
-        console.log(unSignedTx)
+        console.log(unSignedTx.to_json())
         const signedTx = await this.cardanoService.signTx(unSignedTx)
-        console.log("Tx signed", signedTx)
+        console.log("Tx signed", signedTx.to_hex())
         const txId = await this.cardanoService.submitTx(signedTx)
         console.log(txId)
     }
 }
+//"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"66bf3e04eac01e892d6f4633bcd1ffb2ba691fae8d2a11d95d24de5632b416d0\")) SNothing))])"
 //"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"8ca5f5f9df45c699c4f79b41272717e478b7788a79b0422dcfb65c9471b4f665\")) SNothing))])"
 //"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"66bf3e04eac01e892d6f4633bcd1ffb2ba691fae8d2a11d95d24de5632b416d0\")) SNothing))])"
 //"transaction submit error ShelleyTxValidationError ShelleyBasedEraBabbage (ApplyTxError [UtxowFailure (FromAlonzoUtxowFail (WrappedShelleyEraFailure (MissingScriptWitnessesUTXOW (fromList [ScriptHash \"8684450100504270c3b68b27ac6f5e9dc923286be8c38f1dc8e5c903\"])))),UtxowFailure (FromAlonzoUtxowFail (PPViewHashesDontMatch (SJust (SafeHash \"c002a381694f26b3439fd509f2159da8f26f58d7ca1f9e347d8e0211e415aa9a\")) SNothing))])"

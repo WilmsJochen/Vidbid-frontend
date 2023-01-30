@@ -28,6 +28,11 @@ export default class ApiService {
         return apiResponse.data;
     }
 
+    async submitTx(signedTx){
+        const {data: apiResponse} = await this.api.post(`/api/tx/submit`,signedTx)
+        return apiResponse.data;
+    }
+
     async upload(unSignedTx, changeAddress){
         const {data: apiResponse} = await this.api.post("/api/upload",{
             unSignedTx,
