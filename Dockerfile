@@ -1,34 +1,41 @@
-FROM nginx:1.19.7-alpine
+# Use the latest stable version of Node.js as the base image
+FROM node:16
 
-# Set default port
-EXPOSE 8080
+# Set the working directory
+WORKDIR /app
 
-# Copy application code
-COPY ./build /usr/share/nginx/html
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
-# Copy nginx config
-COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
-COPY ./conf/gzip.conf /etc/nginx/conf.d/gzip.conf
+# Install dependencies
+RUN npm install -g npm@latest && npm install
 
-# Initialize environment variables into filesystem
-WORKDIR /usr/share/nginx/html
-COPY ./conf/env.sh .
-COPY .env .
+# Copy the rest of the application files
+COPY . .
 
-# Add bash
-RUN apk add --no-cache bash
+# Set environment variables
+ENV NODE_ENV=production
 
-# Run script which initializes env vars to fs
-RUN chmod +x env.sh
+# Expose the port the app runs on
+EXPOSE 3000
 
-## add permissions for nginx user
-RUN chown -R nginx:nginx /usr/share/nginx/html && chmod -R 755 /usr/share/nginx/html && \
-        chown -R nginx:nginx /var/cache/nginx && \
-        chown -R nginx:nginx /var/log/nginx && \
-        chown -R nginx:nginx /etc/nginx/conf.d
+# Add a health check to monitor the container's health
+HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
 
-RUN touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
-USER nginx
+# Clean up unnecessary files to reduce image size
+RUN rm -rf /var/lib/apt/lists/*
 
-# Start Nginx server
-CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]
+# Set the entry point and command to start the application
+CMD ["npm", "start"]
+
+# Comments to explain each major section of the Dockerfile
+# - Base image: Use the latest stable version of Node.js
+# - Working directory: Set the working directory to /app
+# - Copy package files: Copy package.json and package-lock.json
+# - Install dependencies: Install npm and project dependencies
+# - Copy application files: Copy the rest of the application files
+# - Environment variables: Set necessary environment variables
+# - Expose port: Expose the port the app runs on
+# - Health check: Add a health check to monitor the container's health
+# - Clean up: Remove unnecessary files to reduce image size
+# - Entry point: Set the entry point and command to start the application
